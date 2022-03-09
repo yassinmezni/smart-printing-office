@@ -1,0 +1,197 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include "connection.h"
+#include "connection.cpp"
+#include<QMessageBox>
+#include<QComboBox>
+#include<QSqlQuery>
+#include <QIntValidator>
+#include"produit1.h"
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+  produit b ;
+
+    ui->setupUi(this);
+    ui->lineEdit_id->setValidator(new QIntValidator(0, 999999, this));
+    ui->lineEdit_stock->setValidator(new QIntValidator(0, 999999, this));
+    ui->lineEdit_prix->setValidator(new QIntValidator(0, 999999, this));
+    ui->tab_produit->setModel(b.read());
+    ui->comboBox->setModel(b.read_id());
+
+
+    QRegularExpression rx("\\b[A-Z ._%+-]+@[A-Z .-]+\\.[A-Z]\\b",
+      QRegularExpression::CaseInsensitiveOption);
+      ui->lineEdit_nom->setValidator(new QRegularExpressionValidator(rx, this));
+      ui->lineEdit_viedo->setValidator(new QRegularExpressionValidator(rx, this));
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+    db.setDatabaseName("Source_Projet2A");
+    db.setUserName("Soumaya");//inserer nom de l'utilisateur
+    db.setPassword("esprit18");
+    if(db.open()){
+        QMessageBox::information(this,"Connection","Database Connected Successfully");
+    }
+    else{
+        QMessageBox::information(this,"Not Connected","Database Not connected");
+    }
+}
+
+
+
+void MainWindow::on_valider_clicked()
+{
+   int id_produit=ui->lineEdit_id->text().toInt();
+    QString nom_produit=ui->lineEdit_nom->text();
+     QString video=ui->lineEdit_viedo->text();
+        int qt_stock=ui->lineEdit_stock->text().toInt();
+       int prix_uni=ui->lineEdit_prix->text().toInt();
+         produit b(id_produit,qt_stock,nom_produit, video,prix_uni);
+         bool test=b.add();
+         if(test)
+         {
+             ui->comboBox->setModel(b.read_id());
+             ui->tab_produit->setModel(b.read());
+             QMessageBox::information(nullptr,QObject::tr("OK"),
+                                    QObject::tr("data added.\n"
+                                                "clicl cancel to exit."),QMessageBox::Cancel);
+         }
+         else{
+             QMessageBox::information(nullptr,QObject::tr("OK"),
+                                    QObject::tr("data not added.\n"
+                                                "clicl cancel to exit."),QMessageBox::Cancel);
+         }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void MainWindow::on_read_clicked()
+{
+    produit b ;
+    ui->tab_produit->setModel(b.read1());
+}
+
+void MainWindow::on_pushButton_delete_clicked()
+{
+    produit b;
+    int id_produit=ui->lineEdit_del->text().toInt();
+    bool test= b.supprimer(id_produit);
+    if(test) {
+
+        ui->tab_produit->setModel(b.read());
+               QMessageBox::information(nullptr,QObject::tr("OK"),
+                                      QObject::tr("delete done.\n"
+                                                  "clic cancel to exit."),QMessageBox::Cancel);
+    }
+    else
+        {ui->tab_produit->setModel(b.read());
+    QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
+                               QObject::tr("delete not done .\n"
+                                           "clic cancel to exit."),QMessageBox::Cancel);}
+}
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    int id_produit=ui->update_id->text().toInt();
+     QString nom_produit=ui->update_nom->text();
+      QString video=ui->update_video->text();
+       int qt_stock=ui->update_stock->text().toInt();
+        //QString request_buy=ui->lineEdit_request->text();
+        int prix_uni=ui->update_prix->text().toInt();
+         // QString mail_buy=ui->lineEdit_mail->text();
+          produit b(id_produit,qt_stock,nom_produit, video,prix_uni);
+             b.update(id_produit);
+             if(b.update(id_produit))
+             {   ui->comboBox->setModel(b.read_id());
+                 ui->tab_produit->setModel(b.read());
+         QMessageBox::information(nullptr,QObject::tr("OK"),
+                                QObject::tr("update effectue.\n"
+                                            "clic cancel to exit."),QMessageBox::Cancel);
+
+             }
+     else
+         {ui->tab_produit->setModel(b.read());
+     QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
+                                QObject::tr("update non effectue.\n"
+                                            "clic cancel to exit."),QMessageBox::Cancel);}
+}
+
+
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    int id=ui->comboBox->currentText().toInt();
+
+        QSqlQuery query;
+
+    query.prepare("select * from PRODUITS where ID_PRODUIT=:id");
+    query.bindValue(":id",id);
+    if(query.exec())
+    {
+        while(query.next())
+              {
+       ui->update_id->setText(query.value(0).toString());
+       ui->update_nom->setText(query.value(1).toString());
+       ui->update_stock->setText(query.value(2).toString());
+       ui->update_prix->setText(query.value(3).toString());
+       ui->update_video->setText(query.value(4).toString());
+        }
+    }
+}
+
+void MainWindow::on_tab_produit_activated(const QModelIndex &index)
+{
+    {
+        QString value=ui->tab_produit->model()->data(index).toString();
+
+            QSqlQuery qry;
+            produit b;
+
+            //Refresh (Actualiser)
+            ui->tab_produit->setModel(b.read());
+
+            qry.prepare("select * from PRODUITS where id_produit='"+value+"'");
+            if(qry.exec())
+                     {
+                         while(qry.next())
+                         {
+                    /*      ui->lineEdit_matricule_update->setText(qry.value(0).toString());
+                          ui->lineEdit_Nom_update->setText(qry.value(1).toString());
+                          ui->lineEdit_prenom_update->setText(qry.value(2).toString());
+                          ui->lineEdit_mail_update->setText(qry.value(3).toString());
+                          ui->lineEdit_gsm_update->setText(qry.value(4).toString());
+                          ui->lineEdit_role_update->setText(qry.value(5).toString());
+                          ui->lineEdit_salaire_update->setText(qry.value(6).toString());
+                          //optionnel quand ti cliques sur le matricule la supprisiion se rempli automatiquement*/
+                          ui->lineEdit_del->setText(qry.value(0).toString());
+                         }
+
+                     }
+    }
+}
