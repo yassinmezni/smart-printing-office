@@ -67,23 +67,16 @@ bool Fournisseur::supprimer(int ref)
     return query.exec();
 }
 
-bool Fournisseur::modifier(int ref)
+bool Fournisseur::modifier()
 {
-
-
-
-
-
-    QString REF_string=QString::number(ref);
-
     QSqlQuery query;
-      query.prepare("update fournisseurs set nom_four=:nom_fourn,mail_four=:mail_four,gsm_fourn=:gsm_fournn,adresse_fourn=:adresse_fourn where ref_four=:ref_four");
-      query.bindValue(":ref_four",REF_string);
-      query.bindValue(":nom_fourn",nom_fourn);
-      query.bindValue(":mail_fourn",mail_fourn);
-      query.bindValue(":gsm_fourn",gsm_fourn);
-      query.bindValue(":adresse_fourn",adresse_fourn);
+    query.prepare("Update fournisseurs set NOM_FOUR=:nom_fourn,MAIL_FOUR=:mail_fourn,GSM_FOURN=:gsm_fourn,ADRESSE_FOURN=:adresse_fourn where REF_FOUR=:reference");
+    query.bindValue(":nom_fourn",nom_fourn);
+    query.bindValue(":mail_fourn",mail_fourn);
+    query.bindValue(":gsm_fourn",gsm_fourn);
+    query.bindValue(":adresse_fourn",adresse_fourn);
+    query.bindValue(":reference",reference);
 
+    return query.exec();
 
-      return query.exec();
 }

@@ -50,7 +50,13 @@ private slots:
 
     void on_ajouterButton_2_clicked();
 
-    void on_supprimerButton_3_clicked();
+    void on_supprimerButton_clicked();
+
+    void on_tableView_2_activated(const QModelIndex &index);
+
+    void on_modifierButton_clicked();
+
+    void on_homeButton_instruction_clicked();
 
 private:
     Ui::SimpleEmp *ui;

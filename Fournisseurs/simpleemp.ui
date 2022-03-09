@@ -62,7 +62,7 @@ QPushButton:hover { background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1
                                       stop: 0 #FF0ECE, stop: 1 #FFFFFF); }</string>
    </property>
    <property name="currentIndex">
-    <number>5</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Home">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -115,7 +115,7 @@ QGroupBox::title {
          </font>
         </property>
         <property name="text">
-         <string>Bienvenue, vous êtes un simple employe!!</string>
+         <string>Bienvenue, vous êtes un simple employe !!</string>
         </property>
        </widget>
        <widget class="QPushButton" name="clButton">
@@ -475,9 +475,112 @@ QGroupBox::title {
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
+      <widget class="QWidget" name="Instructions">
+       <attribute name="title">
+        <string>Instructions !!</string>
+       </attribute>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>120</y>
+          <width>411</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>* La 1ére lettre du nom de fournissuer doit être en majuscule.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>140</y>
+          <width>421</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>* Le GSM du fournisseur est nombre positive qui contient que 8 chiffres.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>180</y>
+          <width>471</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>* L'adresse du fournisseur peut contient des chiffres, des lettres et de symboles.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Instructions_2">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>70</y>
+          <width>221</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Des instructions :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>160</y>
+          <width>311</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>* L'email du fournisseur obéit à sa forme générale.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>100</y>
+          <width>221</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>* La référence est un nombre positive.</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="homeButton_instruction">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>260</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Home</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="Ajouter_2">
        <attribute name="title">
-        <string>Ajouter Fournisseur</string>
+        <string>Ajouter</string>
        </attribute>
        <widget class="QWidget" name="layoutWidget_2">
         <property name="geometry">
@@ -639,16 +742,16 @@ QGroupBox::title {
           <x>50</x>
           <y>40</y>
           <width>561</width>
-          <height>171</height>
+          <height>201</height>
          </rect>
         </property>
        </widget>
       </widget>
       <widget class="QWidget" name="Supprimer_3">
        <attribute name="title">
-        <string>Supprimer un fournisseur</string>
+        <string>Supprimer</string>
        </attribute>
-       <widget class="QLineEdit" name="supprimer_par_reference_3">
+       <widget class="QLineEdit" name="supprimer_par_reference">
         <property name="geometry">
          <rect>
           <x>410</x>
@@ -658,7 +761,7 @@ QGroupBox::title {
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="supprimerButton_3">
+       <widget class="QPushButton" name="supprimerButton">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -671,7 +774,7 @@ QGroupBox::title {
          <string>Supprimer</string>
         </property>
        </widget>
-       <widget class="QLabel" name="text_saisir_id_a_supprimer_3">
+       <widget class="QLabel" name="text_saisir_id_a_supprimer">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -691,7 +794,7 @@ QGroupBox::title {
          <string>Saisir la référence du fournisseur :</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="homeButton_supprimer_3">
+       <widget class="QPushButton" name="homeButton_supprimer">
         <property name="geometry">
          <rect>
           <x>560</x>
@@ -705,9 +808,140 @@ QGroupBox::title {
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="Modifier">
+       <attribute name="title">
+        <string>Modifier</string>
+       </attribute>
+       <widget class="QLabel" name="text_saisir_id_a_modifier">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>30</y>
+          <width>401</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>9</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>NB: Double click sur la référence du fournisseur à modifier </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="homeButton_modifier">
+        <property name="geometry">
+         <rect>
+          <x>570</x>
+          <y>270</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Home</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>70</y>
+          <width>151</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="saisie_3">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_ref">
+             <property name="text">
+              <string>Référence :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_nom">
+             <property name="text">
+              <string>Nom :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_mail">
+             <property name="text">
+              <string>Email :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_gsm">
+             <property name="text">
+              <string>GSM :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_adresse">
+             <property name="text">
+              <string>Adresse :</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_reference"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_nomfour"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_email"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_gsmfour"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_ad"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QTableView" name="tableView_2">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>70</y>
+          <width>461</width>
+          <height>171</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="modifierButton">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>260</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Modifier</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="Rechercher_2">
        <attribute name="title">
-        <string>Rechercher un fournisseur</string>
+        <string>Rechercher</string>
        </attribute>
        <widget class="QLineEdit" name="recherche_par_reference_3">
         <property name="geometry">

@@ -20,3 +20,8 @@ if (db.open())
 
     return  test;
 }
+
+void Connection::closeConnection()
+{
+    db.close();
+}

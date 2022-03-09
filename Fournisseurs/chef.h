@@ -19,26 +19,6 @@ public:
 private slots:
     void on_pushButton_12_clicked();
 
-    void on_pushButton_6_clicked();
-
-    void on_pushButton_5_clicked();
-
-    void on_pushButton_4_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_13_clicked();
-
-    void on_pushButton_15_clicked();
-
-    void on_pushButton_14_clicked();
-
-    void on_pushButton_16_clicked();
-
-    void on_pushButton_17_clicked();
-
     void on_prodButton_clicked();
 
     void on_cmdButton_clicked();
@@ -52,8 +32,6 @@ private slots:
     void on_homeButton_clicked();
 
     void on_homeButton_2_clicked();
-
-    void on_pushButton_clicked();
 
     void on_homeButton_3_clicked();
 
@@ -82,6 +60,10 @@ private slots:
     void on_modifierButton_clicked();
 
     void on_homeButton_modifier_clicked();
+
+    void on_tableView_2_activated(const QModelIndex &index);
+
+    void on_homeButton_instruction_clicked();
 
 private:
     Ui::Chef *ui;

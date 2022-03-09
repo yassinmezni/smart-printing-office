@@ -39,6 +39,7 @@ Chef::Chef(QWidget *parent) :
 
     //Affichage
     ui->tableView->setModel(Ftmp.afficher());
+    ui->tableView_2->setModel(Ftmp.afficher());
 }
 
 Chef::~Chef()
@@ -149,10 +150,15 @@ void Chef::on_homeButton_modifier_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+void Chef::on_homeButton_instruction_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
 
 void Chef::on_ajouterButton_clicked()
 {
-    Chef c;
+
     //Récupération des données
     int reference=ui->lineEdit_ref->text().toInt();
     QString nom_fourn=ui->lineEdit_nom->text();
@@ -166,7 +172,7 @@ void Chef::on_ajouterButton_clicked()
 
     if (test)
     {
-        ui->Ajouter->show();
+
         //Refresh (Actualiser)
         ui->tableView->setModel(Ftmp.afficher());
 
@@ -192,7 +198,7 @@ void Chef::on_supprimerButton_clicked()
 
     if(test)
     {
-        ui->Supprimer->show();
+
         //Refresh (Actualiser)
         ui->tableView->setModel(Ftmp.afficher());
 
@@ -208,48 +214,48 @@ void Chef::on_supprimerButton_clicked()
     }
 }
 
+
+
+void Chef::on_tableView_2_activated(const QModelIndex &index)
+{
+    QString value=ui->tableView_2->model()->data(index).toString();
+    Connection c;
+    c.closeConnection();
+    QSqlQuery qry;
+
+    //Refresh (Actualiser)
+    ui->tableView_2->setModel(Ftmp.afficher());
+
+    qry.prepare("select * from fournisseurs where REF_FOUR='"+value+"'");
+    if(qry.exec())
+             {
+                 while(qry.next())
+                 {
+                  ui->lineEdit_reference->setText(qry.value(0).toString());
+                  ui->lineEdit_nomfour->setText(qry.value(1).toString());
+                  ui->lineEdit_email->setText(qry.value(2).toString());
+                  ui->lineEdit_gsmfour->setText(qry.value(3).toString());
+                  ui->lineEdit_ad->setText(qry.value(4).toString());
+                 }
+
+             }
+}
+
+
 void Chef::on_modifierButton_clicked()
 {
 
-    int Ref=ui->lineEdit_reference->text().toInt();
-    QString nom_four=ui->lineEdit_nomfour->text();
-    QString mail_four=ui->lineEdit_email->text();
-    int gsm_four=ui->lineEdit_gsmfour->text().toInt();
-    QString adresse_four=ui->lineEdit_ad->text();
-
-    Fournisseur Four(Ref,nom_four,mail_four,gsm_four,adresse_four);
-
-    bool test = Four.modifier(Ref);
-
-    if (test){
-
-        QMessageBox::information(nullptr,QObject::tr("OK"),
-                                 QObject::tr("Modification effectué\n"
-                                             "Click Cancel to exit"),QMessageBox::Cancel);
-
-        ui->lineEdit_reference->clear();
-        ui->lineEdit_nomfour->clear();
-        ui->lineEdit_email->clear();
-        ui->lineEdit_gsmfour->clear();
-        ui->lineEdit_ad->clear();
-    }
-    else
-        QMessageBox::critical(nullptr,QObject::tr("Not OK"),
-                              QObject::tr("Modification non effectué.\n"
-                                          "Clic Cancel to exit."),QMessageBox::Cancel);
-
-
-
-
-
-    /*Fournisseur f;
+    Fournisseur f;
     f.setRef(ui->lineEdit_reference->text().toInt());
     f.setNom_fourn(ui->lineEdit_nomfour->text());
     f.setMail_fourn(ui->lineEdit_email->text());
     f.setGSM(ui->lineEdit_gsmfour->text().toInt());
     f.setAdresse_fourn(ui->lineEdit_ad->text());
 
-    bool check=f.modifier();
+    //Refresh (Actualiser)
+    ui->tableView_2->setModel(Ftmp.afficher());
+
+   bool check=f.modifier();
 
     if (check)
     {
@@ -259,9 +265,9 @@ void Chef::on_modifierButton_clicked()
     }
     else{
             QMessageBox::information(nullptr, QObject::tr("Modification"),
-            QObject::tr("Modification échoué.\n"
+            QObject::tr("Modification échouée.\n"
                                     "Click Cancel to exit."), QMessageBox::Cancel);
-        }*/
+        }
 
 }
 
