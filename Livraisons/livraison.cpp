@@ -1,0 +1,77 @@
+#include "livraison.h"
+#include <QSqlQuery>
+#include <QtDebug>
+#include <QObject>
+
+
+livraison::livraison()
+    {
+    id=0; frais=0; date=" "; localisation=" ";
+    }
+
+livraison::livraison(int id,QString date,QString localisation,int frais)
+{ this->id=id ; this->date=date ; this->localisation=localisation ; this->frais=frais;}
+
+int livraison::getid(){return id;}
+QString livraison::getdate(){return date;}
+QString livraison::getlocalisation(){return localisation;}
+int livraison::getfrais(){return frais;}
+
+void livraison::setid(int id){ this->id=id;}
+void livraison::setdate(QString date){this->date=date;}
+void livraison::setlocalisation(QString localisation){this->localisation=localisation;}
+void livraison::setfrais(int frais){this->frais=frais;}
+
+bool livraison::ajouter()
+{   QSqlQuery query;
+    QString id_QString=QString::number(id);
+    QString frais_QString=QString::number(frais);
+
+
+             query.prepare("INSERT INTO LIVRAISON (ID_L,DATE_LIVRAISON,LOCALISATION,FRAIS_LIVRAISONS) "
+                           "VALUES (:id,:date,:localisation,:frais)");
+             query.bindValue(":id",id_QString);
+             query.bindValue(":date", date);
+             query.bindValue(":localisation", localisation);
+             query.bindValue(":frais", frais_QString);
+
+           return  query.exec();
+}
+bool livraison::supprimer(int id)
+{
+    QSqlQuery query;
+          query.prepare(" Delete from livraison where id_l=:id_l");
+          query.bindValue(0, id);
+        return  query.exec();
+
+}
+QSqlQueryModel* livraison::afficher()
+{
+    QSqlQueryModel* model=new QSqlQueryModel();
+
+        model->setQuery("SELECT * FROM livraison");
+        model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
+        model->setHeaderData(1, Qt::Horizontal, QObject::tr("date"));
+        model->setHeaderData(2, Qt::Horizontal, QObject::tr("localisation"));
+        model->setHeaderData(3, Qt::Horizontal, QObject::tr("frais"));
+
+
+
+    return model;
+}
+
+bool livraison::modifier()
+{
+    QSqlQuery query;
+    // Prendra la requête en paramètre pour la préparer à l’exécution.
+    query.prepare("Update livraison set DATE_LIVRAISON=:date,LOCALISATION=:localisation,FRAIS_LIVRAISONS=:frais where ID_L=:id");
+
+    //Associer une variable applicatives (contenant les valeurs saisies dans les lineEdits) à chaque bindvalue
+    query.bindValue(":date",date);
+    query.bindValue(":localisation",localisation);
+    query.bindValue(":frais",frais);
+    query.bindValue(":id",id);
+
+    //Envoie la requête pour l’exécuter.
+    return query.exec();
+}

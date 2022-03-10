@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/Background.jpg</file>
+        <file>img/Logo.png</file>
+        <file>img/Rajel.png</file>
+        <file>img/livreur.png</file>
+        <file>img/l.png</file>
+        <file>../Projet qt/delivery.png</file>
+        <file>img/livraison.png</file>
+        <file>img/back.png</file>
+        <file>img/end.png</file>
+        <file>img/iiiiiiii.png</file>
+        <file>img/f.png</file>
+        <file>img/j.png</file>
+        <file>img/zebra.jpg</file>
+        <file>img/blackwhite.png</file>
+        <file>img/k.png</file>
+        <file>img/blue.jpg</file>
+        <file>img/BBBB.png</file>
+        <file>img/PPPPP.png</file>
+    </qresource>
+</RCC>
