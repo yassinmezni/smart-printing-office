@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>801</width>
-    <height>451</height>
+    <width>899</width>
+    <height>560</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,8 +94,8 @@ QGroupBox::title {
          <widget class="QLabel" name="label">
           <property name="geometry">
            <rect>
-            <x>140</x>
-            <y>30</y>
+            <x>220</x>
+            <y>50</y>
             <width>431</width>
             <height>61</height>
            </rect>
@@ -115,8 +115,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="clButton">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>180</y>
+            <x>360</x>
+            <y>230</y>
             <width>121</width>
             <height>28</height>
            </rect>
@@ -131,8 +131,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="prodButton">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>130</y>
+            <x>140</x>
+            <y>180</y>
             <width>121</width>
             <height>28</height>
            </rect>
@@ -144,8 +144,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="cmdButton">
           <property name="geometry">
            <rect>
-            <x>510</x>
-            <y>130</y>
+            <x>590</x>
+            <y>180</y>
             <width>121</width>
             <height>28</height>
            </rect>
@@ -157,8 +157,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="livrButton">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>240</y>
+            <x>140</x>
+            <y>290</y>
             <width>121</width>
             <height>28</height>
            </rect>
@@ -170,8 +170,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="empButton">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>300</y>
+            <x>360</x>
+            <y>350</y>
             <width>121</width>
             <height>28</height>
            </rect>
@@ -183,8 +183,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="pushButton_12">
           <property name="geometry">
            <rect>
-            <x>610</x>
-            <y>370</y>
+            <x>710</x>
+            <y>470</y>
             <width>121</width>
             <height>28</height>
            </rect>
@@ -199,8 +199,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="fournisseurButton">
           <property name="geometry">
            <rect>
-            <x>510</x>
-            <y>250</y>
+            <x>590</x>
+            <y>300</y>
             <width>141</width>
             <height>28</height>
            </rect>
@@ -496,8 +496,8 @@ QGroupBox::title {
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>761</width>
-         <height>411</height>
+         <width>861</width>
+         <height>521</height>
         </rect>
        </property>
        <property name="title">
@@ -506,7 +506,7 @@ QGroupBox::title {
        <widget class="QLabel" name="Lesfournisseurs">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>70</x>
           <y>20</y>
           <width>171</width>
           <height>31</height>
@@ -529,8 +529,8 @@ QGroupBox::title {
          <rect>
           <x>40</x>
           <y>60</y>
-          <width>681</width>
-          <height>331</height>
+          <width>781</width>
+          <height>421</height>
          </rect>
         </property>
         <property name="currentIndex">
@@ -552,83 +552,18 @@ QGroupBox::title {
          <attribute name="title">
           <string>Important !!</string>
          </attribute>
-         <widget class="QLabel" name="label_2">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>120</y>
-            <width>411</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>* La 1ére lettre du nom de fournissuer doit être en majuscule.</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_15">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>160</y>
-            <width>311</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>* L'email du fournisseur obéit à sa forme générale.</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_13">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>100</y>
-            <width>261</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>* La référence est un nombre positive.</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_14">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>140</y>
-            <width>421</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>* Le GSM du fournisseur est nombre positive qui contient que 8 chiffres.</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_16">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>180</y>
-            <width>471</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>* L'adresse du fournisseur peut contient des chiffres, des lettres et de symboles.</string>
-          </property>
-         </widget>
          <widget class="QLabel" name="Instructions">
           <property name="geometry">
            <rect>
             <x>60</x>
-            <y>70</y>
-            <width>151</width>
+            <y>100</y>
+            <width>181</width>
             <height>16</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <pointsize>10</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -640,8 +575,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="homeButton_instruction">
           <property name="geometry">
            <rect>
-            <x>560</x>
-            <y>260</y>
+            <x>660</x>
+            <y>350</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -649,6 +584,78 @@ QGroupBox::title {
           <property name="text">
            <string>Home</string>
           </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>140</y>
+            <width>571</width>
+            <height>121</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_13">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>* La référence est un nombre positive.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>* La 1ére lettre du nom de fournissuer doit être en majuscule.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_14">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>* Le GSM du fournisseur est nombre positive qui contient que 8 chiffres.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>* L'email du fournisseur obéit à sa forme générale.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_16">
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>* L'adresse du fournisseur peut contient des chiffres, des lettres et de symboles.</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
         <widget class="QWidget" name="Ajouter">
@@ -658,10 +665,10 @@ QGroupBox::title {
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>70</x>
-            <y>50</y>
-            <width>461</width>
-            <height>181</height>
+            <x>110</x>
+            <y>80</y>
+            <width>561</width>
+            <height>221</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="saisie">
@@ -669,6 +676,17 @@ QGroupBox::title {
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
               <widget class="QLabel" name="label_8">
+               <property name="font">
+                <font>
+                 <pointsize>8</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                 <kerning>true</kerning>
+                </font>
+               </property>
                <property name="text">
                 <string>Références :</string>
                </property>
@@ -676,6 +694,17 @@ QGroupBox::title {
              </item>
              <item>
               <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <pointsize>8</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                 <kerning>true</kerning>
+                </font>
+               </property>
                <property name="text">
                 <string>Nom fournisseur :</string>
                </property>
@@ -683,6 +712,17 @@ QGroupBox::title {
              </item>
              <item>
               <widget class="QLabel" name="label_10">
+               <property name="font">
+                <font>
+                 <pointsize>8</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                 <kerning>true</kerning>
+                </font>
+               </property>
                <property name="text">
                 <string>GSM Fournisseur :</string>
                </property>
@@ -690,6 +730,17 @@ QGroupBox::title {
              </item>
              <item>
               <widget class="QLabel" name="label_11">
+               <property name="font">
+                <font>
+                 <pointsize>8</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                 <kerning>true</kerning>
+                </font>
+               </property>
                <property name="text">
                 <string>Mail Fournisseur :</string>
                </property>
@@ -697,6 +748,17 @@ QGroupBox::title {
              </item>
              <item>
               <widget class="QLabel" name="label_12">
+               <property name="font">
+                <font>
+                 <pointsize>8</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                 <underline>false</underline>
+                 <strikeout>false</strikeout>
+                 <kerning>true</kerning>
+                </font>
+               </property>
                <property name="text">
                 <string>Adresse Fournisseur :</string>
                </property>
@@ -728,8 +790,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="ajouterButton">
           <property name="geometry">
            <rect>
-            <x>110</x>
-            <y>250</y>
+            <x>130</x>
+            <y>320</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -741,8 +803,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="homeButton_ajouter">
           <property name="geometry">
            <rect>
-            <x>570</x>
-            <y>270</y>
+            <x>660</x>
+            <y>350</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -755,7 +817,7 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>50</x>
-            <y>20</y>
+            <y>40</y>
             <width>221</width>
             <height>16</height>
            </rect>
@@ -780,7 +842,7 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>70</x>
-            <y>10</y>
+            <y>30</y>
             <width>221</width>
             <height>16</height>
            </rect>
@@ -799,8 +861,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="homeButton_afficher">
           <property name="geometry">
            <rect>
-            <x>550</x>
-            <y>260</y>
+            <x>670</x>
+            <y>350</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -813,9 +875,9 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>40</x>
-            <y>40</y>
-            <width>581</width>
-            <height>201</height>
+            <y>60</y>
+            <width>691</width>
+            <height>261</height>
            </rect>
           </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
@@ -830,9 +892,9 @@ QGroupBox::title {
          <widget class="QLineEdit" name="supprimer_par_reference">
           <property name="geometry">
            <rect>
-            <x>410</x>
-            <y>120</y>
-            <width>113</width>
+            <x>450</x>
+            <y>150</y>
+            <width>141</width>
             <height>22</height>
            </rect>
           </property>
@@ -840,8 +902,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="supprimerButton">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>180</y>
+            <x>330</x>
+            <y>200</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -853,17 +915,17 @@ QGroupBox::title {
          <widget class="QLabel" name="text_saisir_id_a_supprimer">
           <property name="geometry">
            <rect>
-            <x>120</x>
-            <y>120</y>
+            <x>160</x>
+            <y>150</y>
             <width>271</width>
-            <height>16</height>
+            <height>20</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <pointsize>9</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
+            <weight>75</weight>
+            <bold>true</bold>
            </font>
           </property>
           <property name="text">
@@ -873,8 +935,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="homeButton_supprimer">
           <property name="geometry">
            <rect>
-            <x>560</x>
-            <y>260</y>
+            <x>650</x>
+            <y>350</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -891,17 +953,17 @@ QGroupBox::title {
          <widget class="QLabel" name="text_saisir_id_a_modifier">
           <property name="geometry">
            <rect>
-            <x>70</x>
+            <x>230</x>
             <y>30</y>
-            <width>401</width>
+            <width>461</width>
             <height>20</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <pointsize>9</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
+            <weight>75</weight>
+            <bold>true</bold>
            </font>
           </property>
           <property name="text">
@@ -912,7 +974,7 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>50</x>
-            <y>260</y>
+            <y>290</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -994,8 +1056,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="homeButton_modifier">
           <property name="geometry">
            <rect>
-            <x>570</x>
-            <y>270</y>
+            <x>660</x>
+            <y>350</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -1009,9 +1071,18 @@ QGroupBox::title {
            <rect>
             <x>180</x>
             <y>70</y>
-            <width>471</width>
-            <height>171</height>
+            <width>561</width>
+            <height>251</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="sortingEnabled">
+           <bool>false</bool>
           </property>
          </widget>
         </widget>
@@ -1023,8 +1094,8 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>70</x>
-            <y>40</y>
-            <width>271</width>
+            <y>60</y>
+            <width>361</width>
             <height>16</height>
            </rect>
           </property>
@@ -1036,14 +1107,14 @@ QGroupBox::title {
            </font>
           </property>
           <property name="text">
-           <string>Saisir la référence du fournisseur :</string>
+           <string>Saisir la référence du fournisseur à chercher :</string>
           </property>
          </widget>
          <widget class="QPushButton" name="homeButton_rechercher">
           <property name="geometry">
            <rect>
-            <x>560</x>
-            <y>260</y>
+            <x>660</x>
+            <y>350</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -1055,8 +1126,8 @@ QGroupBox::title {
          <widget class="QLineEdit" name="recherche_par_reference">
           <property name="geometry">
            <rect>
-            <x>330</x>
-            <y>40</y>
+            <x>390</x>
+            <y>60</y>
             <width>113</width>
             <height>22</height>
            </rect>
@@ -1065,8 +1136,8 @@ QGroupBox::title {
          <widget class="QPushButton" name="rechercherButton">
           <property name="geometry">
            <rect>
-            <x>490</x>
-            <y>30</y>
+            <x>540</x>
+            <y>60</y>
             <width>93</width>
             <height>28</height>
            </rect>
@@ -1079,7 +1150,7 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>230</y>
+            <y>330</y>
             <width>131</width>
             <height>28</height>
            </rect>
@@ -1092,7 +1163,7 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>100</x>
-            <y>230</y>
+            <y>330</y>
             <width>231</width>
             <height>31</height>
            </rect>
@@ -1105,9 +1176,9 @@ QGroupBox::title {
           <property name="geometry">
            <rect>
             <x>80</x>
-            <y>80</y>
-            <width>541</width>
-            <height>131</height>
+            <y>120</y>
+            <width>591</width>
+            <height>171</height>
            </rect>
           </property>
           <column>

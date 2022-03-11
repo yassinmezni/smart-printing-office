@@ -35,7 +35,7 @@ Chef::Chef(QWidget *parent) :
     ui->lineEdit_ref->setValidator(new QIntValidator(100,9999999,this));
 
     //Controle de saisie GSM
-    ui->lineEdit_gsm->setValidator(new QIntValidator(20000000,99999999,this));
+    ui->lineEdit_gsm->setValidator(new QIntValidator(100,99999999,this));
 
     //Affichage
     ui->tableView->setModel(Ftmp.afficher());
@@ -175,6 +175,7 @@ void Chef::on_ajouterButton_clicked()
 
         //Refresh (Actualiser)
         ui->tableView->setModel(Ftmp.afficher());
+        ui->tableView_2->setModel(Ftmp.afficher());
 
         QMessageBox::information(nullptr,QObject::tr("OK"),
                                  QObject::tr("Ajout effectué\n"
@@ -201,6 +202,7 @@ void Chef::on_supprimerButton_clicked()
 
         //Refresh (Actualiser)
         ui->tableView->setModel(Ftmp.afficher());
+        ui->tableView_2->setModel(Ftmp.afficher());
 
         QMessageBox::information(nullptr,QObject::tr("OK"),
                                  QObject::tr("Suppression effectuée\n"
@@ -223,9 +225,6 @@ void Chef::on_tableView_2_activated(const QModelIndex &index)
     c.closeConnection();
     QSqlQuery qry;
 
-    //Refresh (Actualiser)
-    ui->tableView_2->setModel(Ftmp.afficher());
-
     qry.prepare("select * from fournisseurs where REF_FOUR='"+value+"'");
     if(qry.exec())
              {
@@ -244,7 +243,6 @@ void Chef::on_tableView_2_activated(const QModelIndex &index)
 
 void Chef::on_modifierButton_clicked()
 {
-
     Fournisseur f;
     f.setRef(ui->lineEdit_reference->text().toInt());
     f.setNom_fourn(ui->lineEdit_nomfour->text());
@@ -252,13 +250,14 @@ void Chef::on_modifierButton_clicked()
     f.setGSM(ui->lineEdit_gsmfour->text().toInt());
     f.setAdresse_fourn(ui->lineEdit_ad->text());
 
-    //Refresh (Actualiser)
-    ui->tableView_2->setModel(Ftmp.afficher());
-
    bool check=f.modifier();
 
     if (check)
     {
+        //Refresh (Actualiser)
+        ui->tableView->setModel(Ftmp.afficher());
+        ui->tableView_2->setModel(Ftmp.afficher());
+
         QMessageBox::information(nullptr, QObject::tr("Modification"),
             QObject::tr("Modification avec succés.\n"
                         "Click Cancel to exit."), QMessageBox::Cancel);

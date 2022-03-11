@@ -18,8 +18,6 @@ public:
 private slots:
     void on_livrButton_clicked();
 
-    void on_homeButton_clicked();
-
     void on_deconnecterButton_clicked();
 
     void on_homeButton_4_clicked();
