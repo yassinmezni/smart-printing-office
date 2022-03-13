@@ -8,12 +8,19 @@
 #include <QSqlQueryModel>
 #include <QIntValidator>
 #include <QRegExpValidator>
+#include <QPdfWriter>
+#include <QDesktopServices>
+#include <QFileDialog>
+#include <QPainter>
 #include "connection.h"
 #include "fournisseur.h"
+
 
 #define EMAIL_RX "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+" \
                  "(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$"
 #define NAME_RX "([A-Z][a-z]*)([\\s\\\'.][A-Z][a-z]*)*"
+
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,26 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //Affichage
-    ui->tableView_2->setModel(Ftmp.afficher());
-    //Controle de saisie Email
-    QRegExp rxEmail(EMAIL_RX);
-    QRegExpValidator *valiEmail = new QRegExpValidator(rxEmail, this);
-    ui->lineEdit_mail->setValidator(valiEmail);
-
-    //Controle de saisie Nom Fournisseur
-    QRegExp rxName(NAME_RX);
-    QRegExpValidator *valiName = new QRegExpValidator(rxName, this);
-    ui->lineEdit_nom->setValidator(valiName);
-
-    //Controle de saisie Reference
-    ui->lineEdit_ref->setValidator(new QIntValidator(100,9999999,this));
-
-    //Controle de saisie GSM
-    ui->lineEdit_gsm->setValidator(new QIntValidator(100,99999999,this));
-
-
-
+    /*LOGIN*/
     //Load Images
     QPixmap rajel(":/img/img/Rajel.png");
     int w = ui->Manpic->width();
@@ -57,6 +45,62 @@ MainWindow::MainWindow(QWidget *parent)
     int y = ui->Background->height();
     ui->Background->setPixmap (background.scaled(x,y,Qt::KeepAspectRatio));
 
+    //Login's Placeholders
+    ui->lineEdit_username->setPlaceholderText("Nom d'utilisateur");
+    ui->lineEdit_password->setPlaceholderText("Mot de passe");
+    //Icons
+    QIcon user(":/img/img/user.png");
+    QIcon password(":/img/img/password.png");
+    ui->lineEdit_username->addAction(user,QLineEdit::LeadingPosition);
+    ui->lineEdit_password->addAction(password,QLineEdit::LeadingPosition);
+    //Clear Buttons
+    ui->lineEdit_username->setClearButtonEnabled(true);
+    ui->lineEdit_password->setClearButtonEnabled(true);
+
+
+
+    //CONTROLE DE SAISIE DE LA REFERENCE
+    //Chef
+    ui->lineEdit_ref->setValidator(new QIntValidator(100,9999999,this)); //Ajout
+    ui->lineEdit_reference->setValidator(new QIntValidator(100,9999999,this)); //Modification
+    //Simple Emp
+    ui->lineEdit_ref_4->setValidator(new QIntValidator(100,9999999,this)); //Ajout
+    ui->lineEdit_reference_4->setValidator(new QIntValidator(100,9999999,this)); //Modification
+
+
+
+    //CONTROLE DE SAISIE DE NOM DE FOURNISSEUR
+    QRegExp rxName(NAME_RX);
+    QRegExpValidator *valiName = new QRegExpValidator(rxName, this);
+    //Chef
+    ui->lineEdit_nom->setValidator(valiName); //Ajout
+    ui->lineEdit_nomfour->setValidator(valiName); //Modification
+    //Simple Emp
+    ui->lineEdit_nom_4->setValidator(valiName); //Ajout
+    ui->lineEdit_nomfour_4->setValidator(valiName); //Modification
+
+
+
+    //CONTROLE DE SAISIE EMAIL
+    QRegExp rxEmail(EMAIL_RX);
+    QRegExpValidator *valiEmail = new QRegExpValidator(rxEmail, this);
+    //Chef
+    ui->lineEdit_mail->setValidator(valiEmail); //Ajout
+    ui->lineEdit_email->setValidator(valiEmail); //Modification
+    //Simple Emp
+    ui->lineEdit_mail_4->setValidator(valiEmail); //Ajout
+    ui->lineEdit_email_4->setValidator(valiEmail); //Modification
+
+
+
+    //CONTROLE DE SAISIE GSM
+    //Chef
+    ui->lineEdit_gsm->setValidator(new QIntValidator(100,99999999,this)); //Ajout
+    ui->lineEdit_gsmfour->setValidator(new QIntValidator(100,99999999,this)); //Modification
+    //Simple Emp
+    ui->lineEdit_gsm_4->setValidator(new QIntValidator(100,99999999,this)); //Ajout
+    ui->lineEdit_gsmfour_4->setValidator(new QIntValidator(100,99999999,this)); //Modification
+
 }
 
 
@@ -64,6 +108,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+/*LOGIN PAGE*/
 
 
 void MainWindow::on_QuitterButton_clicked()
@@ -80,6 +127,9 @@ void MainWindow::on_QuitterButton_clicked()
     QMessageBox::StandardButton reply = QMessageBox::question(this,"Smart Printing System","Êtes-vous sûr ?", QMessageBox::Yes | QMessageBox::No);
     if (reply==QMessageBox::Yes)
     {
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
+        ui->statusbar->clearMessage();
         QApplication::quit();
     } else
     {
@@ -92,29 +142,52 @@ void MainWindow::on_LoginButton_clicked()
     QString nom_utilisateur = ui->lineEdit_username->text();
     QString password = ui->lineEdit_password->text();
 
+
     if (nom_utilisateur == "admin" && password == "admin")
     {
         ui->stackedWidget->setCurrentIndex(1);
     } else if (nom_utilisateur == "simple" && password == "simple")
             {
-                hide();
-                simp_emp = new SimpleEmp(this);
-                simp_emp->show();
+                ui->stackedWidget->setCurrentIndex(3);
             } else if (nom_utilisateur == "livreur" && password == "livreur")
                     {
-                        hide();
-                        livreur = new Livreur(this);
-                        livreur->show();
-                    } else {
-                                ui->statusbar->showMessage("Le nom d'utilisateur ou le mot de passe est(sont) incorrecte(s).");
-                            }
+                        ui->stackedWidget->setCurrentIndex(2);
+                    }
+                    else
+                    {
+                        ui->statusbar->showMessage("Le nom d'utilisateur ou le mot de passe est/sont incorrecte/s.");
+                    }
+
+
+    if (nom_utilisateur.isEmpty() || password.isEmpty())
+    {
+        if (password.isEmpty() && nom_utilisateur.isEmpty())
+        {
+            QMessageBox::warning(this, tr("Champ vide"),
+                    tr("Veuillez saisir votre nom \nd'utilisateur et mot de passe."));
+        }else if (nom_utilisateur.isEmpty())
+        {
+            QMessageBox::warning(this, tr("Champ vide"),
+                    tr("Veuillez saisir votre nom d'utilisateur."));
+        } else if (password.isEmpty())
+        {
+            QMessageBox::warning(this, tr("Champ vide"),
+                    tr("Veuillez saisir votre mot de passe."));
+        }
+    }
 }
+
+
+
+
+/*CHEF*/
+
+
 
 void MainWindow::on_tableView_2_activated(const QModelIndex &index)
 {
     QString value=ui->tableView_2->model()->data(index).toString();
-    Connection c;
-    c.closeConnection();
+
     QSqlQuery qry;
 
     qry.prepare("select * from fournisseurs where REF_FOUR='"+value+"'");
@@ -156,12 +229,26 @@ void MainWindow::on_ajouterButton_clicked()
                                  QObject::tr("Ajout effectué\n"
                                              "Click Cancel to exit."),QMessageBox::Cancel);
 
+        ui->lineEdit_ref->clear();
+        ui->lineEdit_nom->clear();
+        ui->lineEdit_mail->clear();
+        ui->lineEdit_gsm->clear();
+        ui->lineEdit_adresse->clear();
+
     }
     else
     {
         QMessageBox::critical(nullptr,QObject::tr("Warning"),
                               QObject::tr("Ajout non effectué\n"
+                                          "La référence existe déjà\n"
                                           "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->lineEdit_ref->clear();
+        ui->lineEdit_nom->clear();
+        ui->lineEdit_mail->clear();
+        ui->lineEdit_gsm->clear();
+        ui->lineEdit_adresse->clear();
+
     }
 }
 
@@ -179,12 +266,27 @@ void MainWindow::on_supprimerButton_2_clicked()
         QMessageBox::information(nullptr,QObject::tr("OK"),
                                  QObject::tr("Suppression effectuée\n"
                                              "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->supprimer_par_reference_2->clear();
+        ui->lineEdit_reference->clear();
+        ui->lineEdit_nomfour->clear();
+        ui->lineEdit_email->clear();
+        ui->lineEdit_gsmfour->clear();
+        ui->lineEdit_ad->clear();
     }
     else
     {
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),
                 QObject::tr("Suppression non effectuée.\n"
+                            "La référence n'existe pas"
                             "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->supprimer_par_reference_2->clear();
+        ui->lineEdit_reference->clear();
+        ui->lineEdit_nomfour->clear();
+        ui->lineEdit_email->clear();
+        ui->lineEdit_gsmfour->clear();
+        ui->lineEdit_ad->clear();
     }
 }
 
@@ -207,17 +309,26 @@ void MainWindow::on_modifierButton_clicked()
         QMessageBox::information(nullptr, QObject::tr("Modification"),
             QObject::tr("Modification avec succés.\n"
                         "Click Cancel to exit."), QMessageBox::Cancel);
+
+        ui->lineEdit_reference->clear();
+        ui->lineEdit_nomfour->clear();
+        ui->lineEdit_email->clear();
+        ui->lineEdit_gsmfour->clear();
+        ui->lineEdit_ad->clear();
+
     }
     else{
             QMessageBox::information(nullptr, QObject::tr("Modification"),
             QObject::tr("Modification échouée.\n"
                                     "Click Cancel to exit."), QMessageBox::Cancel);
-        }
-}
 
-void MainWindow::on_homeButton_instruction_clicked()
-{
-    ui->stackedWidget_2->setCurrentIndex(0);
+            ui->lineEdit_reference->clear();
+            ui->lineEdit_nomfour->clear();
+            ui->lineEdit_email->clear();
+            ui->lineEdit_gsmfour->clear();
+            ui->lineEdit_ad->clear();
+
+        }
 }
 
 void MainWindow::on_homeButton_ajouter_clicked()
@@ -235,8 +346,9 @@ void MainWindow::on_pushButton_12_clicked()
     QMessageBox::StandardButton reply = QMessageBox::question(this,"Smart Printing System","Êtes-vous sûr ?", QMessageBox::Yes | QMessageBox::No);
     if (reply==QMessageBox::Yes)
     {
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
         ui->stackedWidget->setCurrentIndex(0);
-        //QApplication::quit();
     } else
     {
         qDebug() <<"No is clicked";
@@ -301,4 +413,416 @@ void MainWindow::on_homeButton_5_clicked()
 void MainWindow::on_homeButton_rechercher_clicked()
 {
     ui->stackedWidget_2->setCurrentIndex(0);
+}
+
+void MainWindow::on_LoadButton_clicked()
+{
+    ui->tableView_2->setModel(Ftmp.afficher()); //Chef
+}
+
+void MainWindow::on_rechercherButton_clicked()
+{
+    int ref_ch=ui->recherche_par_reference_2->text().toInt();
+
+    ui->tableView->setModel(Ftmp.chercher(ref_ch));
+    ui->recherche_par_reference_2->clear();
+}
+
+void MainWindow::on_TrierButton_Ref_clicked()
+{
+    ui->tableView_2->setModel(Ftmp.trier_ref());
+}
+
+void MainWindow::on_TrierButton_Nom_clicked()
+{
+    ui->tableView_2->setModel(Ftmp.trier_nom());
+}
+
+
+/*LIVREUR*/
+
+
+
+void MainWindow::on_livrButton_3_clicked()
+{
+    ui->stackedWidget_3->setCurrentIndex(4);
+}
+
+void MainWindow::on_homeButton_14_clicked()
+{
+    ui->stackedWidget_3->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_14_clicked()
+{
+    QMessageBox::StandardButton reply = QMessageBox::question(this,"Smart Printing System","Êtes-vous sûr ?", QMessageBox::Yes | QMessageBox::No);
+    if (reply==QMessageBox::Yes)
+    {
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
+        ui->stackedWidget->setCurrentIndex(0);
+    } else
+    {
+        qDebug() <<"No is clicked";
+    }
+}
+
+void MainWindow::on_fournisseurButton_3_clicked()
+{
+    QMessageBox::critical(nullptr, QObject::tr("Gestion des fournisseurs"),
+    QObject::tr("Vous êtes un livreur. \nVous n'avez pas les droits d'accées nécessaires pour accéder.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_empButton_3_clicked()
+{
+    QMessageBox::critical(nullptr, QObject::tr("Gestion des employes"),
+    QObject::tr("Vous êtes un livreur. \nVous n'avez pas les droits d'accées nécessaires pour accéder.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_clButton_3_clicked()
+{
+    QMessageBox::critical(nullptr, QObject::tr("Gestion des clients"),
+    QObject::tr("Vous êtes un livreur. \nVous n'avez pas les droits d'accées nécessaires pour accéder.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_prodButton_3_clicked()
+{
+    QMessageBox::critical(nullptr, QObject::tr("Gestion des produits"),
+    QObject::tr("Vous êtes un livreur. \nVous n'avez pas les droits d'accées nécessaires pour accéder.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_cmdButton_3_clicked()
+{
+    QMessageBox::critical(nullptr, QObject::tr("Gestion des commandes"),
+    QObject::tr("Vous êtes un livreur. \nVous n'avez pas les droits d'accées nécessaires pour accéder.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+
+/*SIMPLE EMPLOYE*/
+
+
+void MainWindow::on_clButton_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(1);
+}
+
+void MainWindow::on_prodButton_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(2);
+}
+
+void MainWindow::on_cmdButton_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(3);
+}
+
+void MainWindow::on_livrButton_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(4);
+}
+
+void MainWindow::on_empButton_4_clicked()
+{
+    QMessageBox::critical(nullptr, QObject::tr("Gestion des employes"),
+    QObject::tr("Vous êtes un simple employé. \nVous n'avez pas les droits d'accées nécessaires pour accéder.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_fournisseurButton_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(6);
+}
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    QMessageBox::StandardButton reply = QMessageBox::question(this,"Smart Printing System","Êtes-vous sûr ?", QMessageBox::Yes | QMessageBox::No);
+    if (reply==QMessageBox::Yes)
+    {
+        ui->lineEdit_username->clear();
+        ui->lineEdit_password->clear();
+        ui->stackedWidget->setCurrentIndex(0);
+    } else
+    {
+        qDebug() <<"No is clicked";
+    }
+}
+
+void MainWindow::on_homeButton_16_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton_17_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton_18_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton_19_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton_ajouter_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton_modifier_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton_rechercher_4_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
+
+void MainWindow::on_ajouterButton_4_clicked()
+{
+    //Récupération des données
+    int reference=ui->lineEdit_ref_4->text().toInt();
+    QString nom_fourn=ui->lineEdit_nom_4->text();
+    QString mail_fourn=ui->lineEdit_mail_4->text();
+    int gsm_fourn=ui->lineEdit_gsm_4->text().toInt();
+    QString adresse_fourn=ui->lineEdit_adresse_4->text();
+
+    Fournisseur F(reference,nom_fourn,mail_fourn,gsm_fourn,adresse_fourn);
+
+    bool test=F.ajouter();
+
+    if (test)
+    {
+
+        //Refresh (Actualiser)
+        ui->tableView_9->setModel(Ftmp.afficher());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                                 QObject::tr("Ajout effectué\n"
+                                             "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->lineEdit_ref_4->clear();
+        ui->lineEdit_nom_4->clear();
+        ui->lineEdit_mail_4->clear();
+        ui->lineEdit_gsm_4->clear();
+        ui->lineEdit_adresse_4->clear();
+
+    }
+    else
+    {
+        QMessageBox::critical(nullptr,QObject::tr("Warning"),
+                              QObject::tr("Ajout non effectué\n"
+                                          "La référence existe déjà"
+                                          "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->lineEdit_ref_4->clear();
+        ui->lineEdit_nom_4->clear();
+        ui->lineEdit_mail_4->clear();
+        ui->lineEdit_gsm_4->clear();
+        ui->lineEdit_adresse_4->clear();
+
+    }
+}
+
+void MainWindow::on_supprimerButton_5_clicked()
+{
+    int ref=ui->supprimer_par_reference_5->text().toInt();
+    bool test=Ftmp.supprimer(ref);
+
+    if(test)
+    {
+
+        //Refresh (Actualiser)
+        ui->tableView_9->setModel(Ftmp.afficher());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                                 QObject::tr("Suppression effectuée\n"
+                                             "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->supprimer_par_reference_5->clear();
+        ui->lineEdit_reference_4->clear();
+        ui->lineEdit_nomfour_4->clear();
+        ui->lineEdit_email_4->clear();
+        ui->lineEdit_gsmfour_4->clear();
+        ui->lineEdit_ad_4->clear();
+    }
+    else
+    {
+        QMessageBox::critical(nullptr,QObject::tr("Not OK"),
+                QObject::tr("Suppression non effectuée.\n"
+                            "Click Cancel to exit."),QMessageBox::Cancel);
+
+        ui->supprimer_par_reference_5->clear();
+        ui->lineEdit_reference_4->clear();
+        ui->lineEdit_nomfour_4->clear();
+        ui->lineEdit_email_4->clear();
+        ui->lineEdit_gsmfour_4->clear();
+        ui->lineEdit_ad_4->clear();
+    }
+}
+
+void MainWindow::on_tableView_9_activated(const QModelIndex &index)
+{
+    QString value=ui->tableView_9->model()->data(index).toString();
+    QSqlQuery qry;
+
+    qry.prepare("select * from fournisseurs where REF_FOUR='"+value+"'");
+    if(qry.exec())
+             {
+                 while(qry.next())
+                 {
+                  ui->lineEdit_reference_4->setText(qry.value(0).toString());
+                  ui->lineEdit_nomfour_4->setText(qry.value(1).toString());
+                  ui->lineEdit_email_4->setText(qry.value(2).toString());
+                  ui->lineEdit_gsmfour_4->setText(qry.value(3).toString());
+                  ui->lineEdit_ad_4->setText(qry.value(4).toString());
+                  ui->supprimer_par_reference_5->setText(qry.value(0).toString());
+                 }
+             }
+}
+
+void MainWindow::on_modifierButton_4_clicked()
+{
+    Fournisseur f;
+    f.setRef(ui->lineEdit_reference_4->text().toInt());
+    f.setNom_fourn(ui->lineEdit_nomfour_4->text());
+    f.setMail_fourn(ui->lineEdit_email_4->text());
+    f.setGSM(ui->lineEdit_gsmfour_4->text().toInt());
+    f.setAdresse_fourn(ui->lineEdit_ad_4->text());
+
+   bool check=f.modifier();
+
+    if (check)
+    {
+        //Refresh (Actualiser)
+        ui->tableView_9->setModel(Ftmp.afficher());
+
+        QMessageBox::information(nullptr, QObject::tr("Modification"),
+            QObject::tr("Modification avec succés.\n"
+                        "Click Cancel to exit."), QMessageBox::Cancel);
+
+        ui->lineEdit_reference_4->clear();
+        ui->lineEdit_nomfour_4->clear();
+        ui->lineEdit_email_4->clear();
+        ui->lineEdit_gsmfour_4->clear();
+        ui->lineEdit_ad_4->clear();
+
+    }
+    else{
+            QMessageBox::information(nullptr, QObject::tr("Modification"),
+            QObject::tr("Modification échouée.\n"
+                        "Click Cancel to exit."), QMessageBox::Cancel);
+
+            ui->lineEdit_reference_4->clear();
+            ui->lineEdit_nomfour_4->clear();
+            ui->lineEdit_email_4->clear();
+            ui->lineEdit_gsmfour_4->clear();
+            ui->lineEdit_ad_4->clear();
+        }
+}
+
+
+void MainWindow::on_LoadButton_2_clicked()
+{
+    ui->tableView_9->setModel(Ftmp.afficher());
+}
+
+void MainWindow::on_rechercherButton_4_clicked()
+{
+    int ref_ch=ui->recherche_par_reference_4->text().toInt();
+
+    ui->tableView_10->setModel(Ftmp.chercher(ref_ch));
+    ui->recherche_par_reference_4->clear();
+}
+
+
+void MainWindow::on_TrierButton_Ref_2_clicked()
+{
+    ui->tableView_9->setModel(Ftmp.trier_ref());
+}
+
+void MainWindow::on_TrierButton_Nom_2_clicked()
+{
+    ui->tableView_9->setModel(Ftmp.trier_nom());
+}
+
+
+void MainWindow::on_PDFButton_clicked()
+{
+    QString ref_pdf=ui->recherche_par_reference_2->text();
+
+    if (ref_pdf.isEmpty())
+    {
+        QMessageBox::critical(nullptr, QObject::tr("PDF File Export"),
+        QObject::tr("Pas de référence saisie. \nVeuillez saisir une référence.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    else
+    {
+        QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+        qDebug()<<dir;
+        QPdfWriter pdf(dir+"/Pdf_fournisseurs.pdf");
+        QPainter painter(&pdf);
+        int i = 4000;
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Arial", 30));
+        painter.drawText(1200,1200,"Contrat de prestation de service");
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Arial", 50));
+        painter.drawPixmap(QRect(4400,1200,918,1027),QPixmap(":/img/img/Logo.png"));
+        painter.drawRect(0,3000,9600,500);
+        painter.setFont(QFont("Arial", 9));
+        painter.setPen(Qt::blue);
+        painter.drawText(300,3300,"Référence");
+        painter.drawText(2300,3300,"Nom");
+        painter.drawText(4300,3300,"Email");
+        painter.drawText(6300,3300,"GSM");
+        painter.drawText(8300,3300,"Adresse");
+
+        QSqlQuery query;
+        query.prepare("SELECT * FROM FOURNISSEURS WHERE REF_FOUR='"+ref_pdf+"'");
+        query.exec();
+        while (query.next())
+        {
+            painter.drawText(300,i,query.value(0).toString());
+            painter.drawText(2300,i,query.value(1).toString());
+            painter.drawText(4300,i,query.value(2).toString());
+            painter.drawText(6300,i,query.value(3).toString());
+            painter.drawText(8300,i,query.value(4).toString());
+            i = i +500;
+        }
+        painter.setFont(QFont("Arial", 9));
+        painter.setPen(Qt::blue);
+        painter.drawText(300,i+200,"Entre les soussignés :");
+        painter.drawText(300,i+500,"La société au capital de OO USD, dont le siège social est enregistrée au Registre du Commerce et des Sociétés");
+        painter.drawText(300,i+800,"sous le numéro OO, Représentée par M. OO ci après désignée Le Client d une part");
+        painter.drawText(300,i+1100,"et La société OO, dont le siège social est enregistrée au Registre du Commerce sous le numéro OO, représentée par M. OO,");
+        painter.drawText(300,i+1400,"ci après dénommée le Prestataire de services ou le Prestataire,");
+        painter.drawText(300,i+1700,"d autre part il a été convenu ce qui suit :");
+
+
+
+        int reponse = QMessageBox::question(this, "Génerer PDF", "<PDF Enregistré>...Vous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
+        if (reponse == QMessageBox::Yes)
+        {
+            QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/Pdf_fournisseurs.pdf"));
+            painter.end();
+        }
+        else
+        {
+            painter.end();
+        }
+
+        ui->recherche_par_reference_2->clear();
+    }
+
 }

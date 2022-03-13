@@ -2,10 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "chef.h"
-#include "simpleemp.h"
-#include "livreur.h"
-
+#include "fournisseur.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,8 +28,6 @@ private slots:
     void on_supprimerButton_2_clicked();
 
     void on_modifierButton_clicked();
-
-    void on_homeButton_instruction_clicked();
 
     void on_homeButton_ajouter_clicked();
 
@@ -64,11 +59,78 @@ private slots:
 
     void on_homeButton_rechercher_clicked();
 
+    void on_livrButton_3_clicked();
+
+    void on_homeButton_14_clicked();
+
+    void on_pushButton_14_clicked();
+
+    void on_fournisseurButton_3_clicked();
+
+    void on_empButton_3_clicked();
+
+    void on_clButton_3_clicked();
+
+    void on_prodButton_3_clicked();
+
+    void on_cmdButton_3_clicked();
+
+    void on_clButton_4_clicked();
+
+    void on_prodButton_4_clicked();
+
+    void on_cmdButton_4_clicked();
+
+    void on_livrButton_4_clicked();
+
+    void on_empButton_4_clicked();
+
+    void on_fournisseurButton_4_clicked();
+
+    void on_pushButton_15_clicked();
+
+    void on_homeButton_16_clicked();
+
+    void on_homeButton_17_clicked();
+
+    void on_homeButton_18_clicked();
+
+    void on_homeButton_19_clicked();
+
+    void on_homeButton_ajouter_4_clicked();
+
+    void on_homeButton_modifier_4_clicked();
+
+    void on_homeButton_rechercher_4_clicked();
+
+    void on_ajouterButton_4_clicked();
+
+    void on_supprimerButton_5_clicked();
+
+    void on_tableView_9_activated(const QModelIndex &index);
+
+    void on_modifierButton_4_clicked();
+
+    void on_LoadButton_clicked();
+
+    void on_LoadButton_2_clicked();
+
+    void on_rechercherButton_clicked();
+
+    void on_rechercherButton_4_clicked();
+
+    void on_TrierButton_Ref_clicked();
+
+    void on_TrierButton_Nom_clicked();
+
+    void on_TrierButton_Ref_2_clicked();
+
+    void on_TrierButton_Nom_2_clicked();
+
+    void on_PDFButton_clicked();
+
 private:
     Ui::MainWindow *ui;
-    Chef *chef;
-    SimpleEmp *simp_emp;
-    Livreur *livreur;
     Fournisseur Ftmp;
 
 };

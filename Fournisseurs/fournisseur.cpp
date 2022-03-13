@@ -3,6 +3,13 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QPdfWriter>
+#include <QDesktopServices>
+#include <QFileDialog>
+#include <QPainter>
+#include <QMessageBox>
+
+
 
 
 
@@ -78,5 +85,58 @@ bool Fournisseur::modifier()
     query.bindValue(":reference",reference);
 
     return query.exec();
+}
+
+QSqlQueryModel * Fournisseur::chercher(int ref)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QSqlQuery query;
+
+    query.prepare("Select * from FOURNISSEURS where REF_FOUR= ? ");
+    query.addBindValue(ref);
+    query.exec();
+
+    model->setQuery(query);
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Reference"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Email"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("GSM"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Adresse"));
+
+  return model;
+}
+
+QSqlQueryModel * Fournisseur::trier_ref()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+    model->setQuery("SELECT * FROM FOURNISSEURS ORDER BY REF_FOUR");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Reference"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Email"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("GSM"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Adresse"));
+
+    return model;
+}
+
+QSqlQueryModel * Fournisseur::trier_nom()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+    model->setQuery("SELECT * FROM FOURNISSEURS ORDER BY NOM_FOUR");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Reference"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Email"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("GSM"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Adresse"));
+
+    return model;
+}
+
+
+
+bool Fournisseur::pdf_fournisseur(int ref)
+{
 
 }

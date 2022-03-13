@@ -56,6 +56,10 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier();
+    QSqlQueryModel * chercher(int);
+    QSqlQueryModel * trier_ref();
+    QSqlQueryModel * trier_nom();
+    bool pdf_fournisseur(int);
 };
 
 #endif // FOURNISSEUR_H
