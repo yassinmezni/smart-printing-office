@@ -911,48 +911,14 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		ui_mainwindow.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmenu.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QStatusBar \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QTabWidget \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QTableView \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtableview.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QToolBar \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		connection.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtSql/QSqlError \
 		connection.cpp \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QComboBox
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QComboBox \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/QIntValidator
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
 debug/produit1.o: produit1.cpp produit1.h \

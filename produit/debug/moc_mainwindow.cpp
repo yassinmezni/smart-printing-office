@@ -126,15 +126,15 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->on_tab_produit_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 3: _t->on_read_clicked(); break;
         //case 4: _t->on_supprimer_clicked(); break;
-        //case 5: _t->on_lineEdit_3_cursorPositionChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+       // case 5: _t->on_lineEdit_3_cursorPositionChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 6: _t->on_pushButton_delete_clicked(); break;
-        //case 7: _t->on_pushButton_show_clicked(); break;
+       // case 7: _t->on_pushButton_show_clicked(); break;
         case 8: _t->on_pushButton_2_clicked(); break;
         //case 9: _t->on_inserer_photo_clicked(); break;
         case 10: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        //case 11: _t->on_comboBox_2_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+       // case 11: _t->on_comboBox_2_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         //case 12: _t->on_comboBox_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        //case 13: _t->on_comboBox_2_textHighlighted((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+       // case 13: _t->on_comboBox_2_textHighlighted((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }

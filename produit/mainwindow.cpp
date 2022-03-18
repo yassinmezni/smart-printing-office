@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tab_produit->setModel(b.afficher());
     ui->comboBox->setModel(b.afficher_id());
     ui->comboBox_2->setModel(b.combobox_fk());
+    ui->comboBox_3->setModel(b.combobox_fk());
+
 
 
       QRegularExpression rx("\\b[A-Z ._%+-]+@[A-Z .-]+\\.[A-Z]\\b",
@@ -112,7 +114,7 @@ void MainWindow::on_pushButton_2_clicked()
       QString video=ui->update_video->text();
        int qt_stock=ui->update_stock->text().toInt();
         int prix_uni=ui->update_prix->text().toInt();
-        int FK_FOURNISSEUR_PR=ui->update_fk->text().toInt();
+        int FK_FOURNISSEUR_PR=ui->comboBox_3->currentText().toInt();
           produit b(id_produit,qt_stock,FK_FOURNISSEUR_PR,nom_produit, video,prix_uni);
              b.update(id_produit);
              if(b.update(id_produit))

@@ -71,6 +71,7 @@ public:
     QPushButton *pushButton_2;
     QComboBox *comboBox;
     QLineEdit *update_fk;
+    QComboBox *comboBox_3;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -390,7 +391,7 @@ public:
         comboBox->setGeometry(QRect(550, 220, 73, 22));
         update_fk = new QLineEdit(tab_2);
         update_fk->setObjectName(QStringLiteral("update_fk"));
-        update_fk->setGeometry(QRect(790, 430, 113, 22));
+        update_fk->setGeometry(QRect(460, 430, 113, 22));
         update_fk->setStyleSheet(QLatin1String("/*QLineEdit{\n"
 "border: 2px solid rgb(37,39,48);\n"
 "border -radius: 20px;\n"
@@ -406,6 +407,9 @@ public:
 "border: 2px solid rgb(85,170,255);\n"
 "background-color: rgb(43,45,56);\n"
 "}*/"));
+        comboBox_3 = new QComboBox(tab_2);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setGeometry(QRect(810, 430, 73, 22));
         tabWidget->addTab(tab_2, QString());
         label_13->raise();
         tab_produit->raise();
@@ -428,6 +432,7 @@ public:
         pushButton_2->raise();
         comboBox->raise();
         update_fk->raise();
+        comboBox_3->raise();
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -442,7 +447,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -479,6 +484,10 @@ public:
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "id", Q_NULLPTR)
+        );
+        comboBox_3->clear();
+        comboBox_3->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "fk", Q_NULLPTR)
         );
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Read", Q_NULLPTR));
     } // retranslateUi
