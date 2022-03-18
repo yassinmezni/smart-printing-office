@@ -228,10 +228,10 @@ background-color:white
      <widget class="QPushButton" name="valider">
       <property name="geometry">
        <rect>
-        <x>570</x>
-        <y>180</y>
-        <width>101</width>
-        <height>31</height>
+        <x>580</x>
+        <y>210</y>
+        <width>281</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
@@ -254,8 +254,8 @@ background-color:white
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>-20</x>
-        <y>-10</y>
+        <x>0</x>
+        <y>-20</y>
         <width>991</width>
         <height>631</height>
        </rect>
@@ -288,35 +288,33 @@ background-color:white
        <string>Prix</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>790</x>
-        <y>460</y>
-        <width>161</width>
-        <height>28</height>
+        <x>40</x>
+        <y>340</y>
+        <width>91</width>
+        <height>20</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">QLineEdit{
-border: 2px solid rgb(37,39,48);
-border -radius: 20px;
-color: #FFF;
-padding -left: 20px;
-padding -right: 20px;
-background-color:rgb(34,36,44);
-}
-QLineEdit:hover{
-border: 2px solid rgb(48,50,62);
-}
-QLineEdit:focus{
-border: 2px solid rgb(85,170,255);
-background-color: rgb(43,45,56);
-}</string>
-      </property>
       <property name="text">
-       <string>Connect to data base </string>
+       <string>fk fournisseur</string>
       </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>340</y>
+        <width>73</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>fk</string>
+       </property>
+      </item>
      </widget>
      <zorder>label_14</zorder>
      <zorder>label</zorder>
@@ -331,7 +329,8 @@ background-color: rgb(43,45,56);
      <zorder>valider</zorder>
      <zorder>lineEdit_prix</zorder>
      <zorder>label_52</zorder>
-     <zorder>pushButton</zorder>
+     <zorder>label_6</zorder>
+     <zorder>comboBox_2</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -350,7 +349,7 @@ background-color: rgb(43,45,56);
      <widget class="QPushButton" name="rechercher_2">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>170</x>
         <y>460</y>
         <width>93</width>
         <height>28</height>
@@ -723,8 +722,8 @@ background-color: rgb(43,45,56);
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>810</x>
-        <y>490</y>
+        <x>800</x>
+        <y>460</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -736,8 +735,8 @@ background-color: rgb(43,45,56);
      <widget class="QComboBox" name="comboBox">
       <property name="geometry">
        <rect>
-        <x>670</x>
-        <y>490</y>
+        <x>550</x>
+        <y>220</y>
         <width>73</width>
         <height>22</height>
        </rect>
@@ -747,6 +746,33 @@ background-color: rgb(43,45,56);
         <string>id</string>
        </property>
       </item>
+     </widget>
+     <widget class="QLineEdit" name="update_fk">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>430</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/*QLineEdit{
+border: 2px solid rgb(37,39,48);
+border -radius: 20px;
+color: #FFF;
+padding -left: 20px;
+padding -right: 20px;
+background-color:rgb(34,36,44);
+}
+QLineEdit:hover{
+border: 2px solid rgb(48,50,62);
+}
+QLineEdit:focus{
+border: 2px solid rgb(85,170,255);
+background-color: rgb(43,45,56);
+}*/</string>
+      </property>
      </widget>
      <zorder>label_13</zorder>
      <zorder>tab_produit</zorder>
@@ -768,6 +794,7 @@ background-color: rgb(43,45,56);
      <zorder>update_id</zorder>
      <zorder>pushButton_2</zorder>
      <zorder>comboBox</zorder>
+     <zorder>update_fk</zorder>
     </widget>
    </widget>
   </widget>

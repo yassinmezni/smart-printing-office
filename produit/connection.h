@@ -6,7 +6,7 @@
 
 class Connection
 {
-    QSqlDatabase db;
+    QSqlDatabase db;//attribut de la classe connection
 public:
     Connection();
     bool createconnect();

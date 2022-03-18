@@ -18,11 +18,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_id->setValidator(new QIntValidator(0, 999999, this));
     ui->lineEdit_stock->setValidator(new QIntValidator(0, 999999, this));
     ui->lineEdit_prix->setValidator(new QIntValidator(0, 999999, this));
-    ui->tab_produit->setModel(b.read());
-    ui->comboBox->setModel(b.read_id());
+    ui->tab_produit->setModel(b.afficher());
+    ui->comboBox->setModel(b.afficher_id());
+    ui->comboBox_2->setModel(b.combobox_fk());
 
 
-    QRegularExpression rx("\\b[A-Z ._%+-]+@[A-Z .-]+\\.[A-Z]\\b",
+      QRegularExpression rx("\\b[A-Z ._%+-]+@[A-Z .-]+\\.[A-Z]\\b",
       QRegularExpression::CaseInsensitiveOption);
       ui->lineEdit_nom->setValidator(new QRegularExpressionValidator(rx, this));
       ui->lineEdit_viedo->setValidator(new QRegularExpressionValidator(rx, this));
@@ -33,35 +34,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("Source_Projet2A");
-    db.setUserName("Soumaya");//inserer nom de l'utilisateur
-    db.setPassword("esprit18");
-    if(db.open()){
-        QMessageBox::information(this,"Connection","Database Connected Successfully");
-    }
-    else{
-        QMessageBox::information(this,"Not Connected","Database Not connected");
-    }
-}
-
 
 
 void MainWindow::on_valider_clicked()
 {
-   int id_produit=ui->lineEdit_id->text().toInt();
+   int id_produit=ui->lineEdit_id->text().toInt();//Convertir la chaine saisie en un entier
     QString nom_produit=ui->lineEdit_nom->text();
      QString video=ui->lineEdit_viedo->text();
         int qt_stock=ui->lineEdit_stock->text().toInt();
        int prix_uni=ui->lineEdit_prix->text().toInt();
-         produit b(id_produit,qt_stock,nom_produit, video,prix_uni);
-         bool test=b.add();
+       int FK_FOURNISSEUR_PR=ui->comboBox_2->currentText().toInt();
+         produit b(id_produit,qt_stock,FK_FOURNISSEUR_PR,nom_produit, video,prix_uni);
+         bool test=b.ajouter();//inserition de l'instance objet produit dans la table produit
          if(test)
          {
-             ui->comboBox->setModel(b.read_id());
-             ui->tab_produit->setModel(b.read());
+             ui->comboBox->setModel(b.afficher_id());
+             ui->tab_produit->setModel(b.afficher());
+
              QMessageBox::information(nullptr,QObject::tr("OK"),
                                     QObject::tr("data added.\n"
                                                 "clicl cancel to exit."),QMessageBox::Cancel);
@@ -92,23 +81,23 @@ void MainWindow::on_valider_clicked()
 void MainWindow::on_read_clicked()
 {
     produit b ;
-    ui->tab_produit->setModel(b.read1());
+    ui->tab_produit->setModel(b.afficher());
 }
 
 void MainWindow::on_pushButton_delete_clicked()
 {
-    produit b;
+
     int id_produit=ui->lineEdit_del->text().toInt();
-    bool test= b.supprimer(id_produit);
+    bool test= b.supprimer(id_produit);//Appel de la méthode supprimer() via l’attribut b
     if(test) {
 
-        ui->tab_produit->setModel(b.read());
+        ui->tab_produit->setModel(b.afficher());
                QMessageBox::information(nullptr,QObject::tr("OK"),
                                       QObject::tr("delete done.\n"
                                                   "clic cancel to exit."),QMessageBox::Cancel);
     }
     else
-        {ui->tab_produit->setModel(b.read());
+        {ui->tab_produit->setModel(b.afficher());
     QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
                                QObject::tr("delete not done .\n"
                                            "clic cancel to exit."),QMessageBox::Cancel);}
@@ -122,21 +111,20 @@ void MainWindow::on_pushButton_2_clicked()
      QString nom_produit=ui->update_nom->text();
       QString video=ui->update_video->text();
        int qt_stock=ui->update_stock->text().toInt();
-        //QString request_buy=ui->lineEdit_request->text();
         int prix_uni=ui->update_prix->text().toInt();
-         // QString mail_buy=ui->lineEdit_mail->text();
-          produit b(id_produit,qt_stock,nom_produit, video,prix_uni);
+        int FK_FOURNISSEUR_PR=ui->update_fk->text().toInt();
+          produit b(id_produit,qt_stock,FK_FOURNISSEUR_PR,nom_produit, video,prix_uni);
              b.update(id_produit);
              if(b.update(id_produit))
-             {   ui->comboBox->setModel(b.read_id());
-                 ui->tab_produit->setModel(b.read());
+             {   ui->comboBox->setModel(b.afficher_id());
+                 ui->tab_produit->setModel(b.afficher());
          QMessageBox::information(nullptr,QObject::tr("OK"),
                                 QObject::tr("update effectue.\n"
                                             "clic cancel to exit."),QMessageBox::Cancel);
 
              }
      else
-         {ui->tab_produit->setModel(b.read());
+         {ui->tab_produit->setModel(b.afficher());
      QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
                                 QObject::tr("update non effectue.\n"
                                             "clic cancel to exit."),QMessageBox::Cancel);}
@@ -174,7 +162,7 @@ void MainWindow::on_tab_produit_activated(const QModelIndex &index)
             produit b;
 
             //Refresh (Actualiser)
-            ui->tab_produit->setModel(b.read());
+            ui->tab_produit->setModel(b.afficher());
 
             qry.prepare("select * from PRODUITS where id_produit='"+value+"'");
             if(qry.exec())
@@ -195,3 +183,4 @@ void MainWindow::on_tab_produit_activated(const QModelIndex &index)
                      }
     }
 }
+

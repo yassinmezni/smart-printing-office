@@ -42,6 +42,12 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
+    void on_comboBox_2_currentIndexChanged(int index);
+
+    void on_comboBox_activated(const QString &arg1);
+
+    void on_comboBox_2_textHighlighted(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     produit b;

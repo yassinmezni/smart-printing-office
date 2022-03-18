@@ -47,7 +47,8 @@ public:
     QLineEdit *lineEdit_prix;
     QLabel *label_14;
     QLabel *label_52;
-    QPushButton *pushButton;
+    QLabel *label_6;
+    QComboBox *comboBox_2;
     QWidget *tab_2;
     QTableView *tab_produit;
     QPushButton *rechercher_2;
@@ -69,6 +70,7 @@ public:
     QLineEdit *update_id;
     QPushButton *pushButton_2;
     QComboBox *comboBox;
+    QLineEdit *update_fk;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -169,38 +171,26 @@ public:
         lineEdit_stock->setStyleSheet(QStringLiteral(""));
         valider = new QPushButton(tab);
         valider->setObjectName(QStringLiteral("valider"));
-        valider->setGeometry(QRect(570, 180, 101, 31));
+        valider->setGeometry(QRect(580, 210, 281, 61));
         lineEdit_prix = new QLineEdit(tab);
         lineEdit_prix->setObjectName(QStringLiteral("lineEdit_prix"));
         lineEdit_prix->setGeometry(QRect(180, 270, 113, 22));
         lineEdit_prix->setStyleSheet(QStringLiteral(""));
         label_14 = new QLabel(tab);
         label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setGeometry(QRect(-20, -10, 991, 631));
+        label_14->setGeometry(QRect(0, -20, 991, 631));
         label_14->setPixmap(QPixmap(QString::fromUtf8("../../../Downloads/lovepik-financial-real-estate-black-gold-background-image_400084852.jpg")));
         label_52 = new QLabel(tab);
         label_52->setObjectName(QStringLiteral("label_52"));
         label_52->setGeometry(QRect(50, 270, 91, 21));
         label_52->setFont(font1);
         label_52->setStyleSheet(QStringLiteral("color: black;"));
-        pushButton = new QPushButton(tab);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(790, 460, 161, 28));
-        pushButton->setStyleSheet(QLatin1String("QLineEdit{\n"
-"border: 2px solid rgb(37,39,48);\n"
-"border -radius: 20px;\n"
-"color: #FFF;\n"
-"padding -left: 20px;\n"
-"padding -right: 20px;\n"
-"background-color:rgb(34,36,44);\n"
-"}\n"
-"QLineEdit:hover{\n"
-"border: 2px solid rgb(48,50,62);\n"
-"}\n"
-"QLineEdit:focus{\n"
-"border: 2px solid rgb(85,170,255);\n"
-"background-color: rgb(43,45,56);\n"
-"}"));
+        label_6 = new QLabel(tab);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(40, 340, 91, 20));
+        comboBox_2 = new QComboBox(tab);
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        comboBox_2->setGeometry(QRect(200, 340, 73, 22));
         tabWidget->addTab(tab, QString());
         label_14->raise();
         label->raise();
@@ -215,7 +205,8 @@ public:
         valider->raise();
         lineEdit_prix->raise();
         label_52->raise();
-        pushButton->raise();
+        label_6->raise();
+        comboBox_2->raise();
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         tab_produit = new QTableView(tab_2);
@@ -223,7 +214,7 @@ public:
         tab_produit->setGeometry(QRect(10, 10, 1011, 201));
         rechercher_2 = new QPushButton(tab_2);
         rechercher_2->setObjectName(QStringLiteral("rechercher_2"));
-        rechercher_2->setGeometry(QRect(150, 460, 93, 28));
+        rechercher_2->setGeometry(QRect(170, 460, 93, 28));
         chercher_id = new QLineEdit(tab_2);
         chercher_id->setObjectName(QStringLiteral("chercher_id"));
         chercher_id->setGeometry(QRect(40, 460, 111, 22));
@@ -393,10 +384,28 @@ public:
 "}"));
         pushButton_2 = new QPushButton(tab_2);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(810, 490, 93, 28));
+        pushButton_2->setGeometry(QRect(800, 460, 93, 28));
         comboBox = new QComboBox(tab_2);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(670, 490, 73, 22));
+        comboBox->setGeometry(QRect(550, 220, 73, 22));
+        update_fk = new QLineEdit(tab_2);
+        update_fk->setObjectName(QStringLiteral("update_fk"));
+        update_fk->setGeometry(QRect(790, 430, 113, 22));
+        update_fk->setStyleSheet(QLatin1String("/*QLineEdit{\n"
+"border: 2px solid rgb(37,39,48);\n"
+"border -radius: 20px;\n"
+"color: #FFF;\n"
+"padding -left: 20px;\n"
+"padding -right: 20px;\n"
+"background-color:rgb(34,36,44);\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border: 2px solid rgb(48,50,62);\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid rgb(85,170,255);\n"
+"background-color: rgb(43,45,56);\n"
+"}*/"));
         tabWidget->addTab(tab_2, QString());
         label_13->raise();
         tab_produit->raise();
@@ -418,6 +427,7 @@ public:
         update_id->raise();
         pushButton_2->raise();
         comboBox->raise();
+        update_fk->raise();
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -432,7 +442,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -449,7 +459,11 @@ public:
         valider->setText(QApplication::translate("MainWindow", "Add", Q_NULLPTR));
         label_14->setText(QString());
         label_52->setText(QApplication::translate("MainWindow", "Prix", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "Connect to data base ", Q_NULLPTR));
+        label_6->setText(QApplication::translate("MainWindow", "fk fournisseur", Q_NULLPTR));
+        comboBox_2->clear();
+        comboBox_2->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "fk", Q_NULLPTR)
+        );
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Add", Q_NULLPTR));
         rechercher_2->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "ID", Q_NULLPTR));

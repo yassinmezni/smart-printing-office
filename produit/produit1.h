@@ -1,5 +1,5 @@
-#ifndef BUYER_H
-#define BUYER_H
+#ifndef PRODUIT_H
+#define PRODUIT_H
 #include <QString>
 #include <QtSql>
 #include <QtSql>
@@ -13,7 +13,7 @@ class produit
 {
 public:
    produit ();
-   produit (int,int,QString,QString,int );
+   produit (int,int,int,QString,QString,int );
    int getID(){return id_produit;}
    QString getNAME(){return nom_produit;}
    QString getVIDEO(){return video;}
@@ -29,16 +29,15 @@ public:
 
    void setPRIX(int num){this->prix_uni=num;}
 
-  bool add ();
-  QSqlQueryModel* read();
-  QSqlQueryModel* read1();
-  QSqlQueryModel* read_id();
+  bool ajouter ();
+  QSqlQueryModel* afficher();
+  QSqlQueryModel* afficher_id();
+  QSqlQueryModel* combobox_fk();
   bool supprimer(int);
-  bool update(int);  //authentification
-
+  bool update(int);
 private:
-  int id_produit,qt_stock;
+  int id_produit,qt_stock,FK_FOURNISSEUR_PR;
   QString nom_produit,video;
   int prix_uni;
 };
-#endif // PROPERTY_H
+#endif // PRODUIT_H
