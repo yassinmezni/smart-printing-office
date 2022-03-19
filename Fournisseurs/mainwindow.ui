@@ -27,7 +27,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Login">
      <widget class="QWidget" name="layoutWidget_9">
@@ -238,7 +238,7 @@ QPushButton:hover { background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1
                                       stop: 0 #FF0ECE, stop: 1 #FFFFFF); }</string>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Home">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -716,7 +716,7 @@ QGroupBox::title {
           </rect>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="usesScrollButtons">
           <bool>true</bool>
@@ -978,9 +978,9 @@ QGroupBox::title {
            </layout>
           </widget>
          </widget>
-         <widget class="QWidget" name="Modifier">
+         <widget class="QWidget" name="Gestion">
           <attribute name="title">
-           <string>Modifier un fournisseur</string>
+           <string>Gestion des fournisseurs</string>
           </attribute>
           <widget class="QLabel" name="text_saisir_id_a_modifier">
            <property name="geometry">
@@ -1102,9 +1102,9 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>220</x>
-             <y>180</y>
+             <y>90</y>
              <width>651</width>
-             <height>181</height>
+             <height>271</height>
             </rect>
            </property>
            <property name="font">
@@ -1207,16 +1207,6 @@ QGroupBox::title {
             <string>Rechercher</string>
            </property>
           </widget>
-          <widget class="QTableView" name="tableView">
-           <property name="geometry">
-            <rect>
-             <x>220</x>
-             <y>90</y>
-             <width>651</width>
-             <height>71</height>
-            </rect>
-           </property>
-          </widget>
           <widget class="QPushButton" name="PDFButton">
            <property name="geometry">
             <rect>
@@ -1270,9 +1260,9 @@ QGroupBox::title {
            </property>
           </widget>
          </widget>
-         <widget class="QWidget" name="Recherche">
+         <widget class="QWidget" name="Historique">
           <attribute name="title">
-           <string>Rechercher un fournisseur</string>
+           <string>Historique de contrôle</string>
           </attribute>
           <widget class="QPushButton" name="homeButton_rechercher">
            <property name="geometry">
@@ -1287,11 +1277,6 @@ QGroupBox::title {
             <string>Home</string>
            </property>
           </widget>
-         </widget>
-         <widget class="QWidget" name="Historique">
-          <attribute name="title">
-           <string>Historique de contrôle</string>
-          </attribute>
          </widget>
         </widget>
         <zorder>tabWidget</zorder>
@@ -3166,9 +3151,9 @@ QGroupBox::title {
            </layout>
           </widget>
          </widget>
-         <widget class="QWidget" name="Modifier_4">
+         <widget class="QWidget" name="Gestion">
           <attribute name="title">
-           <string>Modifier un fournisseur</string>
+           <string>Gestion des fournisseurs</string>
           </attribute>
           <widget class="QLabel" name="text_saisir_id_a_modifier_4">
            <property name="geometry">
@@ -3290,9 +3275,9 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>230</x>
-             <y>180</y>
+             <y>90</y>
              <width>651</width>
-             <height>181</height>
+             <height>271</height>
             </rect>
            </property>
            <property name="font">
@@ -3382,16 +3367,6 @@ QGroupBox::title {
             </item>
            </layout>
           </widget>
-          <widget class="QTableView" name="tableView_10">
-           <property name="geometry">
-            <rect>
-             <x>230</x>
-             <y>90</y>
-             <width>651</width>
-             <height>71</height>
-            </rect>
-           </property>
-          </widget>
           <widget class="QPushButton" name="rechercherButton_4">
            <property name="geometry">
             <rect>
@@ -3458,9 +3433,9 @@ QGroupBox::title {
            </property>
           </widget>
          </widget>
-         <widget class="QWidget" name="Recherche_4">
+         <widget class="QWidget" name="Historique">
           <attribute name="title">
-           <string>Rechercher un fournisseur</string>
+           <string>Historique de contrôle</string>
           </attribute>
           <widget class="QPushButton" name="homeButton_rechercher_4">
            <property name="geometry">
@@ -3475,29 +3450,6 @@ QGroupBox::title {
             <string>Home</string>
            </property>
           </widget>
-          <widget class="QLabel" name="genererpdf_txt_4">
-           <property name="geometry">
-            <rect>
-             <x>150</x>
-             <y>310</y>
-             <width>261</width>
-             <height>31</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Pour la génération du contrat en PDF :</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QWidget" name="Historique_4">
-          <attribute name="title">
-           <string>Historique de contrôle</string>
-          </attribute>
          </widget>
         </widget>
        </widget>

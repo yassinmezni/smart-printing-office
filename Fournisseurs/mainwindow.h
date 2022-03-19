@@ -129,6 +129,8 @@ private slots:
 
     void on_PDFButton_clicked();
 
+    void on_PDFButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     Fournisseur Ftmp;

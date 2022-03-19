@@ -155,7 +155,11 @@ void MainWindow::on_LoginButton_clicked()
                     }
                     else
                     {
-                        ui->statusbar->showMessage("Le nom d'utilisateur ou le mot de passe est/sont incorrecte/s.");
+                        QMessageBox::critical(nullptr, QObject::tr("Smart Printing System"),
+                                              QObject::tr("Le nom d'utilisateur ou le mot de passe que \n"
+                                                          "vous avez saisi(e) n’est pas associé(e) à un compte.\n"
+                                                          "Trouvez votre compte et connectez-vous.\n"
+                                                          "Click Cancel to exit."), QMessageBox::Cancel);
                     }
 
 
@@ -424,8 +428,7 @@ void MainWindow::on_rechercherButton_clicked()
 {
     int ref_ch=ui->recherche_par_reference_2->text().toInt();
 
-    ui->tableView->setModel(Ftmp.chercher(ref_ch));
-    ui->recherche_par_reference_2->clear();
+    ui->tableView_2->setModel(Ftmp.chercher(ref_ch));
 }
 
 void MainWindow::on_TrierButton_Ref_clicked()
@@ -438,6 +441,76 @@ void MainWindow::on_TrierButton_Nom_clicked()
     ui->tableView_2->setModel(Ftmp.trier_nom());
 }
 
+void MainWindow::on_PDFButton_clicked()
+{
+    QString ref_pdf=ui->recherche_par_reference_2->text();
+
+    if (ref_pdf.isEmpty())
+    {
+        QMessageBox::critical(nullptr, QObject::tr("PDF File Export"),
+        QObject::tr("Pas de référence saisie. \nVeuillez saisir une référence.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    else
+    {
+        QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home/Desktop",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+        qDebug()<<dir;
+        QPdfWriter pdf(dir+"/Contrat.pdf");
+        QPainter painter(&pdf);
+        int i = 4000;
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Arial", 30));
+        painter.drawText(1200,1200,"Contrat de prestation de service");
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Arial", 50));
+        painter.drawPixmap(QRect(4400,1200,918,1027),QPixmap(":/img/img/Logo.png"));
+        painter.drawRect(0,3000,9600,500);
+        painter.setFont(QFont("Arial", 9));
+        painter.setPen(Qt::blue);
+        painter.drawText(300,3300,"Référence");
+        painter.drawText(2300,3300,"Nom");
+        painter.drawText(4300,3300,"Email");
+        painter.drawText(6300,3300,"GSM");
+        painter.drawText(8300,3300,"Adresse");
+
+        QSqlQuery query;
+        query.prepare("SELECT * FROM FOURNISSEURS WHERE REF_FOUR='"+ref_pdf+"'");
+        query.exec();
+        while (query.next())
+        {
+            painter.drawText(300,i,query.value(0).toString());
+            painter.drawText(2300,i,query.value(1).toString());
+            painter.drawText(4300,i,query.value(2).toString());
+            painter.drawText(6300,i,query.value(3).toString());
+            painter.drawText(8300,i,query.value(4).toString());
+            i = i +500;
+        }
+        painter.setFont(QFont("Arial", 9));
+        painter.setPen(Qt::blue);
+        painter.drawText(300,i+200,"Entre les soussignés :");
+        painter.drawText(300,i+500,"La société au capital de OO USD, dont le siège social est enregistrée au Registre du Commerce et des Sociétés");
+        painter.drawText(300,i+800,"sous le numéro OO, Représentée par M. OO ci après désignée Le Client d une part");
+        painter.drawText(300,i+1100,"et La société OO, dont le siège social est enregistrée au Registre du Commerce sous le numéro OO, représentée par M. OO,");
+        painter.drawText(300,i+1400,"ci après dénommée le Prestataire de services ou le Prestataire,");
+        painter.drawText(300,i+1700,"d autre part il a été convenu ce qui suit :");
+
+
+
+        int reponse = QMessageBox::question(this, "Génerer PDF", "PDF Enregistré.\nVous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
+        if (reponse == QMessageBox::Yes)
+        {
+            QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/Contrat.pdf"));
+            painter.end();
+        }
+        else
+        {
+            painter.end();
+        }
+
+        ui->recherche_par_reference_2->clear();
+    }
+
+}
 
 /*LIVREUR*/
 
@@ -740,8 +813,7 @@ void MainWindow::on_rechercherButton_4_clicked()
 {
     int ref_ch=ui->recherche_par_reference_4->text().toInt();
 
-    ui->tableView_10->setModel(Ftmp.chercher(ref_ch));
-    ui->recherche_par_reference_4->clear();
+    ui->tableView_9->setModel(Ftmp.chercher(ref_ch));
 }
 
 
@@ -756,9 +828,9 @@ void MainWindow::on_TrierButton_Nom_2_clicked()
 }
 
 
-void MainWindow::on_PDFButton_clicked()
+void MainWindow::on_PDFButton_4_clicked()
 {
-    QString ref_pdf=ui->recherche_par_reference_2->text();
+    QString ref_pdf=ui->recherche_par_reference_4->text();
 
     if (ref_pdf.isEmpty())
     {
@@ -768,9 +840,9 @@ void MainWindow::on_PDFButton_clicked()
     }
     else
     {
-        QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+        QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home/Desktop",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
         qDebug()<<dir;
-        QPdfWriter pdf(dir+"/Pdf_fournisseurs.pdf");
+        QPdfWriter pdf(dir+"/Contrat.pdf");
         QPainter painter(&pdf);
         int i = 4000;
         painter.setPen(Qt::black);
@@ -811,10 +883,10 @@ void MainWindow::on_PDFButton_clicked()
 
 
 
-        int reponse = QMessageBox::question(this, "Génerer PDF", "<PDF Enregistré>...Vous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
+        int reponse = QMessageBox::question(this, "Génerer PDF", "PDF Enregistré.\nVous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
         if (reponse == QMessageBox::Yes)
         {
-            QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/Pdf_fournisseurs.pdf"));
+            QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/Contrat.pdf"));
             painter.end();
         }
         else
@@ -822,7 +894,6 @@ void MainWindow::on_PDFButton_clicked()
             painter.end();
         }
 
-        ui->recherche_par_reference_2->clear();
+        ui->recherche_par_reference_4->clear();
     }
-
 }
