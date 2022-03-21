@@ -186,3 +186,17 @@ void MainWindow::on_tab_produit_activated(const QModelIndex &index)
     }
 }
 
+
+void MainWindow::on_rechercher_2_clicked()
+{
+    produit p;
+        int id_produit;
+        id_produit=ui->chercher_id->text().toInt();
+
+
+       bool test= true;
+        if(test==(true))
+        {
+          ui->tab_produit->setModel(p.rechercher(id_produit));
+    }
+}

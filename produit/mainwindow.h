@@ -48,6 +48,8 @@ private slots:
 
     void on_comboBox_2_textHighlighted(const QString &arg1);
 
+    void on_rechercher_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     produit b;

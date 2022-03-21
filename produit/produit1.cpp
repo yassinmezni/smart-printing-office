@@ -109,3 +109,19 @@ query.bindValue(":FK_FOURNISSEUR_PR", fk_string);
 return query.exec();
 }
 
+QSqlQueryModel * produit::rechercher(int id_produit)
+{
+
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery query;
+    QString res = QString::number(id_produit);
+    query.prepare("Select * from PRODUITS where id_produit =:id_produit");
+    query.bindValue(":id_produit",res);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_produit"));
+
+        return model;
+   }
+
+

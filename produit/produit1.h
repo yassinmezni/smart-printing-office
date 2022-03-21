@@ -35,6 +35,7 @@ public:
   QSqlQueryModel* combobox_fk();
   bool supprimer(int);
   bool update(int);
+  QSqlQueryModel * rechercher(int );
 private:
   int id_produit,qt_stock,FK_FOURNISSEUR_PR;
   QString nom_produit,video;
