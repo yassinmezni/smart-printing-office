@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>658</height>
+    <width>1189</width>
+    <height>731</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1041</width>
-      <height>561</height>
+      <width>1151</width>
+      <height>671</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -47,14 +47,14 @@
            <item>
             <widget class="QLabel" name="nom_utilisateur_3">
              <property name="text">
-              <string>Nom d'utilisateur:</string>
+              <string>Nom d'utilisateur :</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_35">
              <property name="text">
-              <string>Mot de passe:</string>
+              <string>Mot de passe :</string>
              </property>
             </widget>
            </item>
@@ -182,11 +182,51 @@
        <pixmap resource="resources.qrc">:/img/img/Background.jpg</pixmap>
       </property>
      </widget>
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="geometry">
+       <rect>
+        <x>749</x>
+        <y>410</y>
+        <width>89</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Francais</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>English</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Espagnole</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="langue">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>410</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Langue :</string>
+      </property>
+     </widget>
      <zorder>Background</zorder>
      <zorder>tableView_5</zorder>
      <zorder>layoutWidget_9</zorder>
      <zorder>logo_sps</zorder>
      <zorder>Manpic</zorder>
+     <zorder>comboBox_3</zorder>
+     <zorder>langue</zorder>
     </widget>
     <widget class="QWidget" name="Chef">
      <widget class="QStackedWidget" name="stackedWidget_2">
@@ -194,8 +234,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>1051</width>
-        <height>591</height>
+        <width>1171</width>
+        <height>691</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -276,8 +316,8 @@ QGroupBox::title {
           <widget class="QLabel" name="label">
            <property name="geometry">
             <rect>
-             <x>290</x>
-             <y>50</y>
+             <x>360</x>
+             <y>80</y>
              <width>431</width>
              <height>61</height>
             </rect>
@@ -297,8 +337,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="clButton">
            <property name="geometry">
             <rect>
-             <x>440</x>
-             <y>230</y>
+             <x>520</x>
+             <y>290</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -313,8 +353,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="prodButton">
            <property name="geometry">
             <rect>
-             <x>220</x>
-             <y>180</y>
+             <x>300</x>
+             <y>240</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -326,8 +366,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="cmdButton">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>180</y>
+             <x>750</x>
+             <y>240</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -339,8 +379,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="livrButton">
            <property name="geometry">
             <rect>
-             <x>220</x>
-             <y>290</y>
+             <x>300</x>
+             <y>350</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -352,8 +392,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="empButton">
            <property name="geometry">
             <rect>
-             <x>440</x>
-             <y>350</y>
+             <x>520</x>
+             <y>410</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -365,8 +405,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="pushButton_12">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>470</y>
+             <x>950</x>
+             <y>580</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -381,8 +421,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="fournisseurButton">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>300</y>
+             <x>750</x>
+             <y>360</y>
              <width>141</width>
              <height>28</height>
             </rect>
@@ -678,8 +718,8 @@ QGroupBox::title {
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>1021</width>
-          <height>541</height>
+          <width>1101</width>
+          <height>621</height>
          </rect>
         </property>
         <property name="title">
@@ -711,8 +751,8 @@ QGroupBox::title {
           <rect>
            <x>40</x>
            <y>60</y>
-           <width>951</width>
-           <height>451</height>
+           <width>1031</width>
+           <height>531</height>
           </rect>
          </property>
          <property name="currentIndex">
@@ -738,7 +778,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>140</x>
-             <y>60</y>
+             <y>90</y>
              <width>561</width>
              <height>181</height>
             </rect>
@@ -863,7 +903,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>760</x>
-             <y>210</y>
+             <y>240</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -875,21 +915,21 @@ QGroupBox::title {
           <widget class="QPushButton" name="homeButton_ajouter">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>380</y>
+             <x>890</x>
+             <y>450</y>
              <width>93</width>
              <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Home</string>
+            <string>Menu</string>
            </property>
           </widget>
           <widget class="QLabel" name="textajoutezfournisseur">
            <property name="geometry">
             <rect>
              <x>140</x>
-             <y>20</y>
+             <y>50</y>
              <width>221</width>
              <height>16</height>
             </rect>
@@ -909,7 +949,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>140</x>
-             <y>270</y>
+             <y>300</y>
              <width>541</width>
              <height>106</height>
             </rect>
@@ -982,7 +1022,7 @@ QGroupBox::title {
           <attribute name="title">
            <string>Gestion des fournisseurs</string>
           </attribute>
-          <widget class="QLabel" name="text_saisir_id_a_modifier">
+          <widget class="QLabel" name="nb">
            <property name="geometry">
             <rect>
              <x>30</x>
@@ -1006,7 +1046,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>320</y>
+             <y>380</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -1019,7 +1059,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>20</x>
-             <y>130</y>
+             <y>190</y>
              <width>181</width>
              <height>171</height>
             </rect>
@@ -1088,21 +1128,21 @@ QGroupBox::title {
           <widget class="QPushButton" name="homeButton_modifier">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>380</y>
+             <x>890</x>
+             <y>450</y>
              <width>93</width>
              <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Home</string>
+            <string>Menu</string>
            </property>
           </widget>
           <widget class="QTableView" name="tableView_2">
            <property name="geometry">
             <rect>
              <x>220</x>
-             <y>90</y>
+             <y>140</y>
              <width>651</width>
              <height>271</height>
             </rect>
@@ -1121,7 +1161,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>320</x>
-             <y>380</y>
+             <y>430</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -1134,7 +1174,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>20</x>
-             <y>380</y>
+             <y>430</y>
              <width>284</width>
              <height>24</height>
             </rect>
@@ -1156,13 +1196,13 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>70</y>
+             <y>150</y>
              <width>93</width>
              <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Load List</string>
+            <string>Actualiser</string>
            </property>
           </widget>
           <widget class="QWidget" name="layoutWidget_5">
@@ -1176,7 +1216,7 @@ QGroupBox::title {
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_7">
             <item>
-             <widget class="QLabel" name="text_saisir_id_a_rechercher_2">
+             <widget class="QLabel" name="saisir_r">
               <property name="font">
                <font>
                 <pointsize>8</pointsize>
@@ -1220,43 +1260,42 @@ QGroupBox::title {
             <string>Génération PDF</string>
            </property>
           </widget>
-          <widget class="QLabel" name="label_2">
+          <widget class="QComboBox" name="comboBox">
            <property name="geometry">
             <rect>
-             <x>460</x>
-             <y>390</y>
-             <width>61</width>
-             <height>16</height>
+             <x>440</x>
+             <y>430</y>
+             <width>101</width>
+             <height>22</height>
             </rect>
            </property>
-           <property name="text">
-            <string>Trier par :</string>
-           </property>
+           <item>
+            <property name="text">
+             <string>Référence</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Nom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Email</string>
+            </property>
+           </item>
           </widget>
-          <widget class="QPushButton" name="TrierButton_Ref">
+          <widget class="QPushButton" name="trier_button">
            <property name="geometry">
             <rect>
-             <x>540</x>
-             <y>380</y>
+             <x>560</x>
+             <y>430</y>
              <width>93</width>
              <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Référence</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="TrierButton_Nom">
-           <property name="geometry">
-            <rect>
-             <x>650</x>
-             <y>380</y>
-             <width>93</width>
-             <height>28</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Nom</string>
+            <string>Trier</string>
            </property>
           </widget>
          </widget>
@@ -1267,14 +1306,14 @@ QGroupBox::title {
           <widget class="QPushButton" name="homeButton_rechercher">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>380</y>
+             <x>890</x>
+             <y>450</y>
              <width>93</width>
              <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Home</string>
+            <string>Menu</string>
            </property>
           </widget>
          </widget>
@@ -1291,8 +1330,8 @@ QGroupBox::title {
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>1061</width>
-        <height>571</height>
+        <width>1121</width>
+        <height>641</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1373,8 +1412,8 @@ QGroupBox::title {
           <widget class="QLabel" name="label_33">
            <property name="geometry">
             <rect>
-             <x>260</x>
-             <y>50</y>
+             <x>320</x>
+             <y>70</y>
              <width>481</width>
              <height>61</height>
             </rect>
@@ -1394,8 +1433,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="clButton_3">
            <property name="geometry">
             <rect>
-             <x>440</x>
-             <y>230</y>
+             <x>500</x>
+             <y>280</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -1410,8 +1449,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="prodButton_3">
            <property name="geometry">
             <rect>
-             <x>220</x>
-             <y>180</y>
+             <x>280</x>
+             <y>230</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -1423,8 +1462,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="cmdButton_3">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>180</y>
+             <x>730</x>
+             <y>230</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -1436,8 +1475,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="livrButton_3">
            <property name="geometry">
             <rect>
-             <x>220</x>
-             <y>290</y>
+             <x>280</x>
+             <y>340</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -1449,8 +1488,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="empButton_3">
            <property name="geometry">
             <rect>
-             <x>440</x>
-             <y>350</y>
+             <x>500</x>
+             <y>400</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -1462,8 +1501,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="pushButton_14">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>470</y>
+             <x>920</x>
+             <y>550</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -1478,8 +1517,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="fournisseurButton_3">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>300</y>
+             <x>730</x>
+             <y>350</y>
              <width>141</width>
              <height>28</height>
             </rect>
@@ -2367,8 +2406,8 @@ QGroupBox::title {
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>1061</width>
-        <height>571</height>
+        <width>1131</width>
+        <height>661</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2449,8 +2488,8 @@ QGroupBox::title {
           <widget class="QLabel" name="label_36">
            <property name="geometry">
             <rect>
-             <x>230</x>
-             <y>50</y>
+             <x>270</x>
+             <y>90</y>
              <width>571</width>
              <height>61</height>
             </rect>
@@ -2470,8 +2509,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="clButton_4">
            <property name="geometry">
             <rect>
-             <x>440</x>
-             <y>230</y>
+             <x>480</x>
+             <y>300</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -2486,8 +2525,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="prodButton_4">
            <property name="geometry">
             <rect>
-             <x>220</x>
-             <y>180</y>
+             <x>260</x>
+             <y>250</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -2499,8 +2538,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="cmdButton_4">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>180</y>
+             <x>710</x>
+             <y>250</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -2512,8 +2551,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="livrButton_4">
            <property name="geometry">
             <rect>
-             <x>220</x>
-             <y>290</y>
+             <x>260</x>
+             <y>360</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -2525,8 +2564,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="empButton_4">
            <property name="geometry">
             <rect>
-             <x>440</x>
-             <y>350</y>
+             <x>480</x>
+             <y>420</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -2538,8 +2577,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="pushButton_15">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>470</y>
+             <x>940</x>
+             <y>580</y>
              <width>121</width>
              <height>28</height>
             </rect>
@@ -2554,8 +2593,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="fournisseurButton_4">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>300</y>
+             <x>710</x>
+             <y>370</y>
              <width>141</width>
              <height>28</height>
             </rect>
@@ -2851,8 +2890,8 @@ QGroupBox::title {
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>1041</width>
-          <height>561</height>
+          <width>1101</width>
+          <height>631</height>
          </rect>
         </property>
         <property name="title">
@@ -2884,8 +2923,8 @@ QGroupBox::title {
           <rect>
            <x>40</x>
            <y>60</y>
-           <width>951</width>
-           <height>451</height>
+           <width>1031</width>
+           <height>541</height>
           </rect>
          </property>
          <property name="currentIndex">
@@ -2911,7 +2950,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>140</x>
-             <y>60</y>
+             <y>100</y>
              <width>561</width>
              <height>181</height>
             </rect>
@@ -3036,7 +3075,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>760</x>
-             <y>210</y>
+             <y>250</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3048,8 +3087,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="homeButton_ajouter_4">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>380</y>
+             <x>890</x>
+             <y>460</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3062,7 +3101,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>140</x>
-             <y>20</y>
+             <y>60</y>
              <width>221</width>
              <height>16</height>
             </rect>
@@ -3082,7 +3121,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>140</x>
-             <y>270</y>
+             <y>310</y>
              <width>541</width>
              <height>106</height>
             </rect>
@@ -3179,7 +3218,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>320</y>
+             <y>410</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3192,7 +3231,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>20</x>
-             <y>130</y>
+             <y>220</y>
              <width>181</width>
              <height>171</height>
             </rect>
@@ -3261,8 +3300,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="homeButton_modifier_4">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>380</y>
+             <x>890</x>
+             <y>460</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3275,7 +3314,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>230</x>
-             <y>90</y>
+             <y>170</y>
              <width>651</width>
              <height>271</height>
             </rect>
@@ -3294,7 +3333,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>330</x>
-             <y>380</y>
+             <y>470</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3307,7 +3346,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>30</x>
-             <y>380</y>
+             <y>470</y>
              <width>284</width>
              <height>24</height>
             </rect>
@@ -3329,7 +3368,7 @@ QGroupBox::title {
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>70</y>
+             <y>180</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3393,44 +3432,43 @@ QGroupBox::title {
             <string>Génération PDF</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="TrierButton_Nom_2">
+          <widget class="QPushButton" name="TrierButton">
            <property name="geometry">
             <rect>
-             <x>670</x>
-             <y>380</y>
+             <x>570</x>
+             <y>460</y>
              <width>93</width>
              <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Nom</string>
+            <string>Trier</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="TrierButton_Ref_2">
+          <widget class="QComboBox" name="comboBox_2">
            <property name="geometry">
             <rect>
-             <x>560</x>
-             <y>380</y>
-             <width>93</width>
-             <height>28</height>
+             <x>450</x>
+             <y>470</y>
+             <width>101</width>
+             <height>22</height>
             </rect>
            </property>
-           <property name="text">
-            <string>Référence</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_18">
-           <property name="geometry">
-            <rect>
-             <x>480</x>
-             <y>390</y>
-             <width>61</width>
-             <height>16</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Trier par :</string>
-           </property>
+           <item>
+            <property name="text">
+             <string>Référence</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Nom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Email</string>
+            </property>
+           </item>
           </widget>
          </widget>
          <widget class="QWidget" name="Historique">
@@ -3440,8 +3478,8 @@ QGroupBox::title {
           <widget class="QPushButton" name="homeButton_rechercher_4">
            <property name="geometry">
             <rect>
-             <x>830</x>
-             <y>380</y>
+             <x>890</x>
+             <y>460</y>
              <width>93</width>
              <height>28</height>
             </rect>
@@ -3463,7 +3501,7 @@ QGroupBox::title {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1102</width>
+     <width>1189</width>
      <height>26</height>
     </rect>
    </property>

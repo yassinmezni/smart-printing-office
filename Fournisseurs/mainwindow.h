@@ -119,17 +119,15 @@ private slots:
 
     void on_rechercherButton_4_clicked();
 
-    void on_TrierButton_Ref_clicked();
-
-    void on_TrierButton_Nom_clicked();
-
-    void on_TrierButton_Ref_2_clicked();
-
-    void on_TrierButton_Nom_2_clicked();
-
     void on_PDFButton_clicked();
 
     void on_PDFButton_4_clicked();
+
+    void on_trier_button_clicked();
+
+    void on_TrierButton_clicked();
+
+    void on_comboBox_3_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

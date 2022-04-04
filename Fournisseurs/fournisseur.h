@@ -59,6 +59,7 @@ public:
     QSqlQueryModel * chercher(int);
     QSqlQueryModel * trier_ref();
     QSqlQueryModel * trier_nom();
+    QSqlQueryModel * trier_email();
     bool pdf_fournisseur(int);
 };
 

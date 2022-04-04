@@ -134,6 +134,20 @@ QSqlQueryModel * Fournisseur::trier_nom()
     return model;
 }
 
+QSqlQueryModel * Fournisseur::trier_email()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+    model->setQuery("SELECT * FROM FOURNISSEURS ORDER BY MAIL_FOUR");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Reference"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Email"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("GSM"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Adresse"));
+
+    return model;
+}
+
 
 
 bool Fournisseur::pdf_fournisseur(int ref)

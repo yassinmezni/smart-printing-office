@@ -431,14 +431,22 @@ void MainWindow::on_rechercherButton_clicked()
     ui->tableView_2->setModel(Ftmp.chercher(ref_ch));
 }
 
-void MainWindow::on_TrierButton_Ref_clicked()
+void MainWindow::on_trier_button_clicked()
 {
-    ui->tableView_2->setModel(Ftmp.trier_ref());
-}
+    QString tri=ui->comboBox->currentText();
 
-void MainWindow::on_TrierButton_Nom_clicked()
-{
-    ui->tableView_2->setModel(Ftmp.trier_nom());
+    if (tri=="Référence")
+    {
+        ui->tableView_2->setModel(Ftmp.trier_ref());
+    }
+    else if (tri=="Nom")
+    {
+        ui->tableView_2->setModel(Ftmp.trier_nom());
+    }
+    else if (tri=="Email")
+    {
+        ui->tableView_2->setModel(Ftmp.trier_email());
+    }
 }
 
 void MainWindow::on_PDFButton_clicked()
@@ -511,6 +519,126 @@ void MainWindow::on_PDFButton_clicked()
     }
 
 }
+
+void MainWindow::on_comboBox_3_currentIndexChanged(int index)
+{
+   if(index == 0) //fr
+   {
+       //Login
+       ui->langue->setText("Langue :");
+       ui->nom_utilisateur_3->setText("Nom utilisateur : ");
+       ui->label_35->setText("Mot de passe :");
+       ui->LoginButton->setText("Se connecter");
+       ui->QuitterButton->setText("Quitter");
+   }
+   if(index == 1) //en
+   {
+       //Login
+       ui->langue->setText("Language :");
+       ui->nom_utilisateur_3->setText("Username : ");
+       ui->label_35->setText("Password :");
+       ui->LoginButton->setText("Login");
+       ui->QuitterButton->setText("Quit");
+
+       //Chef Home
+       ui->label->setText("Welcome, you're the chief !!");
+       ui->prodButton->setText("Products");
+       ui->livrButton->setText("Deliveries");
+       ui->empButton->setText("Employees");
+       ui->fournisseurButton->setText("Suppliers");
+       ui->cmdButton->setText("Orders");
+       ui->clButton->setText("Clients");
+       ui->pushButton_12->setText("Disconnect");
+
+       //Chef Fournisseurs
+       ui->Lesfournisseurs->setText("Suppliers");
+
+       //Chef Fournisseurs Insertion
+       ui->textajoutezfournisseur->setText("Add a supplier :");
+       ui->label_9->setText("");//ref
+       ui->label_10->setText("");//nom
+       ui->label_11->setText("");//gsm
+       ui->label_12->setText("");//mail
+       ui->label_17->setText("");//adresse
+       ui->label_13->setText("* The reference is a positive number.");
+       ui->label_8->setText("* The 1st letter of the supplier's name must be capitalized.");
+       ui->label_14->setText("* The provider's GSM is a positive number which contains only 8 digits.");
+       ui->label_15->setText("* The supplier's email follows its general form.");
+       ui->label_16->setText("* The supplier's addresse contains numbers, lettres and symboles.");
+       ui->homeButton_ajouter->setText("Home");
+
+       //Chef Fournisseurs Gestion
+       ui->nb->setText("");
+       ui->saisir_r->setText("");
+       ui->rechercherButton->setText("");
+       ui->PDFButton->setText("");
+       ui->LoadButton->setText("");
+       ui->label_ref->setText("");
+       ui->label_nom->setText("");
+       ui->label_mail->setText("");
+       ui->label_gsm->setText("");
+       ui->label_adresse->setText("");
+       ui->modifierButton->setText("");
+       ui->label_ref_2->setText("");
+       ui->supprimerButton_2->setText("");
+       ui->trier_button->setText("");
+       ui->homeButton_modifier->setText("");
+   }
+   if(index == 2) //esp
+   {
+       //Login
+       ui->langue->setText("Lingua :");
+       ui->nom_utilisateur_3->setText("Nombre usuario : ");
+       ui->label_35->setText("Clave :");
+       ui->LoginButton->setText("Acceso");
+       ui->QuitterButton->setText("Salir");
+
+       //Chef Home
+       ui->label->setText("Bienvenido, tu eres el chef !!");
+       ui->prodButton->setText("Productos");
+       ui->livrButton->setText("Entregas");
+       ui->empButton->setText("Empleados");
+       ui->fournisseurButton->setText("Proveedores");
+       ui->cmdButton->setText("Pedidos");
+       ui->clButton->setText("Clientela");
+       ui->pushButton_12->setText("Desconectar");
+
+       //Chef Fournisseurs
+       ui->Lesfournisseurs->setText("Proveedores");
+
+       //Chef Fournisseurs Insertion
+       ui->textajoutezfournisseur->setText("Añadir un proveedor :");
+       ui->label_9->setText("Referencia");//ref
+       ui->label_10->setText("Nombre del proveedor");//nom
+       ui->label_11->setText("GSM del proveedor");//gsm
+       ui->label_12->setText("Email del proveedor");//mail
+       ui->label_17->setText("Dirección del proveedor");//adresse
+       ui->label_13->setText("* La referencia es un número positivo.");
+       ui->label_8->setText("* La primera letra del nombre del proveedor debe estar en mayúscula.");
+       ui->label_14->setText("* El GSM del proveedor es un número positivo que contiene solo 8 dígitos.");
+       ui->label_15->setText("* El correo electrónico del proveedor sigue su forma general.");
+       ui->label_16->setText("* La dirección del proveedor puede contener números, letras y símbolos.");
+       ui->homeButton_ajouter->setText("Menù");
+
+       //Chef Fournisseurs Gestion
+       ui->nb->setText("");
+       ui->saisir_r->setText("");
+       ui->rechercherButton->setText("");
+       ui->PDFButton->setText("");
+       ui->LoadButton->setText("");
+       ui->label_ref->setText("");
+       ui->label_nom->setText("");
+       ui->label_mail->setText("");
+       ui->label_gsm->setText("");
+       ui->label_adresse->setText("");
+       ui->modifierButton->setText("");
+       ui->label_ref_2->setText("");
+       ui->supprimerButton_2->setText("");
+       ui->trier_button->setText("");
+       ui->homeButton_modifier->setText("");
+   }
+}
+
 
 /*LIVREUR*/
 
@@ -816,16 +944,24 @@ void MainWindow::on_rechercherButton_4_clicked()
     ui->tableView_9->setModel(Ftmp.chercher(ref_ch));
 }
 
-
-void MainWindow::on_TrierButton_Ref_2_clicked()
+void MainWindow::on_TrierButton_clicked()
 {
-    ui->tableView_9->setModel(Ftmp.trier_ref());
+    QString tri=ui->comboBox_2->currentText();
+
+    if (tri=="Référence")
+    {
+        ui->tableView_9->setModel(Ftmp.trier_ref());
+    }
+    else if (tri=="Nom")
+    {
+        ui->tableView_9->setModel(Ftmp.trier_nom());
+    }
+    else if (tri=="Email")
+    {
+        ui->tableView_9->setModel(Ftmp.trier_email());
+    }
 }
 
-void MainWindow::on_TrierButton_Nom_2_clicked()
-{
-    ui->tableView_9->setModel(Ftmp.trier_nom());
-}
 
 
 void MainWindow::on_PDFButton_4_clicked()
@@ -897,3 +1033,7 @@ void MainWindow::on_PDFButton_4_clicked()
         ui->recherche_par_reference_4->clear();
     }
 }
+
+
+
+
