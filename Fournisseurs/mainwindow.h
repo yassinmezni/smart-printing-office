@@ -19,7 +19,7 @@ public:
 private slots:
     void on_QuitterButton_clicked();
 
-    void on_LoginButton_clicked();
+    int on_LoginButton_clicked();
 
     void on_tableView_2_activated(const QModelIndex &index);
 
@@ -101,8 +101,6 @@ private slots:
 
     void on_homeButton_modifier_4_clicked();
 
-    void on_homeButton_rechercher_4_clicked();
-
     void on_ajouterButton_4_clicked();
 
     void on_supprimerButton_5_clicked();
@@ -115,10 +113,6 @@ private slots:
 
     void on_LoadButton_2_clicked();
 
-    void on_rechercherButton_clicked();
-
-    void on_rechercherButton_4_clicked();
-
     void on_PDFButton_clicked();
 
     void on_PDFButton_4_clicked();
@@ -128,6 +122,10 @@ private slots:
     void on_TrierButton_clicked();
 
     void on_comboBox_3_currentIndexChanged(int index);
+
+    void on_LoadButton_Historique_clicked();
+
+    void on_recherche_par_reference_2_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

@@ -8,7 +8,7 @@
 
 class Fournisseur
 {
-    QString nom_fourn,mail_fourn,adresse_fourn;
+    QString nom_fourn,mail_fourn,adresse_fourn,date;
     int reference,gsm_fourn;
 
 public:
@@ -56,11 +56,12 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier();
-    QSqlQueryModel * chercher(int);
+    QSqlQueryModel * Recherchefournisseur(QString recherche);
+
     QSqlQueryModel * trier_ref();
     QSqlQueryModel * trier_nom();
     QSqlQueryModel * trier_email();
-    bool pdf_fournisseur(int);
+    QSqlQueryModel * afficher_historique();
 };
 
 #endif // FOURNISSEUR_H
