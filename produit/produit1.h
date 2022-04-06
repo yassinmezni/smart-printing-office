@@ -36,6 +36,18 @@ public:
   bool supprimer(int);
   bool update(int);
   QSqlQueryModel * rechercher(int );
+  QSqlQueryModel * rechercher_nom(QString );
+  QSqlQueryModel * rechercher_prix(int );
+  QSqlQueryModel * Rechercheproduit(QString recherche);
+
+  QSqlQueryModel * tri_id();
+  QSqlQueryModel * tri_prix();
+  QSqlQueryModel*Tri_nom();
+  QSqlQueryModel *  trierr(const QString &critere, const QString &mode );
+
+  QSqlQueryModel * afficher_email();
+  QSqlQueryModel * afficher_historique();
+
 private:
   int id_produit,qt_stock,FK_FOURNISSEUR_PR;
   QString nom_produit,video;

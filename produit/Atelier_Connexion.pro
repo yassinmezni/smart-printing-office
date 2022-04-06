@@ -3,9 +3,12 @@
 # Project created by QtCreator 2018-10-26T21:45:23
 #
 #-------------------------------------------------
-
+QT       += core gui multimedia multimediawidgets
+QT       += core gui sql printsupport network
 QT       += core gui sql
+QT +=serialport
 
+QT       += core gui sql multimedia printsupport charts network serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Atelier_Connexion
@@ -28,12 +31,14 @@ SOURCES += \
     connection.cpp \
         main.cpp \
         mainwindow.cpp \
-    produit1.cpp
+    produit1.cpp \
+    smtp.cpp
 
 HEADERS += \
     connection.h \
         mainwindow.h \
-    produit1.h
+    produit1.h \
+    smtp.h
 
 FORMS += \
         mainwindow.ui
@@ -42,3 +47,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

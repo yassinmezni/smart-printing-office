@@ -14,12 +14,15 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
@@ -31,6 +34,10 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionopen;
+    QAction *actionplay;
+    QAction *actionpause;
+    QAction *actionstop;
     QWidget *centralWidget;
     QTabWidget *tabWidget;
     QWidget *tab;
@@ -51,8 +58,6 @@ public:
     QComboBox *comboBox_2;
     QWidget *tab_2;
     QTableView *tab_produit;
-    QPushButton *rechercher_2;
-    QLineEdit *chercher_id;
     QLabel *label_7;
     QLabel *label_8;
     QLineEdit *update_video;
@@ -70,17 +75,55 @@ public:
     QLineEdit *update_id;
     QPushButton *pushButton_2;
     QComboBox *comboBox;
-    QLineEdit *update_fk;
     QComboBox *comboBox_3;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QRadioButton *radioButton_3;
+    QLineEdit *recherche_par_reference_2;
+    QLabel *label_16;
+    QWidget *tab_3;
+    QGroupBox *groupBox;
+    QLineEdit *subject;
+    QPlainTextEdit *msg;
+    QPushButton *pushButton_mail;
+    QComboBox *comboBox_mail_4;
+    QPushButton *pb_gotomail;
+    QLabel *label_11;
+    QLabel *label_15;
+    QWidget *tab_4;
+    QWidget *tab_5;
+    QTableView *tableView_historique;
+    QPushButton *loadButton_historique;
+    QPushButton *homeButton_recherche;
+    QStatusBar *statusBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1034, 636);
+        actionopen = new QAction(MainWindow);
+        actionopen->setObjectName(QStringLiteral("actionopen"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/images/icons/folder_page_white.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionopen->setIcon(icon);
+        actionplay = new QAction(MainWindow);
+        actionplay->setObjectName(QStringLiteral("actionplay"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/images/icons/control_play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionplay->setIcon(icon1);
+        actionpause = new QAction(MainWindow);
+        actionpause->setObjectName(QStringLiteral("actionpause"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/images/icons/control_pause.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionpause->setIcon(icon2);
+        actionstop = new QAction(MainWindow);
+        actionstop->setObjectName(QStringLiteral("actionstop"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/images/icons/control_stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionstop->setIcon(icon3);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QLatin1String("QWidget {\n"
@@ -172,7 +215,7 @@ public:
         lineEdit_stock->setStyleSheet(QStringLiteral(""));
         valider = new QPushButton(tab);
         valider->setObjectName(QStringLiteral("valider"));
-        valider->setGeometry(QRect(580, 210, 281, 61));
+        valider->setGeometry(QRect(100, 430, 281, 61));
         lineEdit_prix = new QLineEdit(tab);
         lineEdit_prix->setObjectName(QStringLiteral("lineEdit_prix"));
         lineEdit_prix->setGeometry(QRect(180, 270, 113, 22));
@@ -213,30 +256,9 @@ public:
         tab_produit = new QTableView(tab_2);
         tab_produit->setObjectName(QStringLiteral("tab_produit"));
         tab_produit->setGeometry(QRect(10, 10, 1011, 201));
-        rechercher_2 = new QPushButton(tab_2);
-        rechercher_2->setObjectName(QStringLiteral("rechercher_2"));
-        rechercher_2->setGeometry(QRect(170, 460, 93, 28));
-        chercher_id = new QLineEdit(tab_2);
-        chercher_id->setObjectName(QStringLiteral("chercher_id"));
-        chercher_id->setGeometry(QRect(40, 460, 111, 22));
-        chercher_id->setStyleSheet(QLatin1String("QLineEdit{\n"
-"border: 2px solid rgb(37,39,48);\n"
-"border -radius: 20px;\n"
-"color: #FFF;\n"
-"padding -left: 20px;\n"
-"padding -right: 20px;\n"
-"background-color:white\n"
-"}\n"
-"QLineEdit:hover{\n"
-"border: 2px solid rgb(48,50,62);\n"
-"}\n"
-"QLineEdit:focus{\n"
-"border: 2px solid rgb(85,170,255);\n"
-"background-color: rgb(43,45,56);\n"
-"}"));
         label_7 = new QLabel(tab_2);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(20, 280, 56, 16));
+        label_7->setGeometry(QRect(10, 340, 56, 16));
         label_7->setFont(font1);
         label_7->setStyleSheet(QStringLiteral("color: black;"));
         label_8 = new QLabel(tab_2);
@@ -338,18 +360,18 @@ public:
         label_9->setStyleSheet(QStringLiteral("color: black;"));
         label_13 = new QLabel(tab_2);
         label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setGeometry(QRect(-320, -30, 1331, 701));
+        label_13->setGeometry(QRect(0, -20, 1331, 701));
         label_13->setPixmap(QPixmap(QString::fromUtf8("../../../Downloads/lovepik-financial-real-estate-black-gold-background-image_400084852.jpg")));
         label_13->setScaledContents(true);
         read = new QPushButton(tab_2);
         read->setObjectName(QStringLiteral("read"));
-        read->setGeometry(QRect(430, 340, 93, 28));
+        read->setGeometry(QRect(310, 440, 93, 28));
         pushButton_delete = new QPushButton(tab_2);
         pushButton_delete->setObjectName(QStringLiteral("pushButton_delete"));
-        pushButton_delete->setGeometry(QRect(230, 280, 93, 28));
+        pushButton_delete->setGeometry(QRect(210, 340, 93, 28));
         lineEdit_del = new QLineEdit(tab_2);
         lineEdit_del->setObjectName(QStringLiteral("lineEdit_del"));
-        lineEdit_del->setGeometry(QRect(90, 280, 113, 22));
+        lineEdit_del->setGeometry(QRect(80, 340, 113, 22));
         lineEdit_del->setStyleSheet(QLatin1String("/*QLineEdit{\n"
 "border: 2px solid rgb(37,39,48);\n"
 "border -radius: 20px;\n"
@@ -389,16 +411,28 @@ public:
         comboBox = new QComboBox(tab_2);
         comboBox->setObjectName(QStringLiteral("comboBox"));
         comboBox->setGeometry(QRect(550, 220, 73, 22));
-        update_fk = new QLineEdit(tab_2);
-        update_fk->setObjectName(QStringLiteral("update_fk"));
-        update_fk->setGeometry(QRect(460, 430, 113, 22));
-        update_fk->setStyleSheet(QLatin1String("/*QLineEdit{\n"
+        comboBox_3 = new QComboBox(tab_2);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setGeometry(QRect(810, 430, 73, 22));
+        radioButton = new QRadioButton(tab_2);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(360, 220, 111, 31));
+        radioButton_2 = new QRadioButton(tab_2);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setGeometry(QRect(210, 220, 111, 31));
+        radioButton_3 = new QRadioButton(tab_2);
+        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioButton_3->setGeometry(QRect(60, 220, 111, 31));
+        recherche_par_reference_2 = new QLineEdit(tab_2);
+        recherche_par_reference_2->setObjectName(QStringLiteral("recherche_par_reference_2"));
+        recherche_par_reference_2->setGeometry(QRect(170, 440, 113, 22));
+        recherche_par_reference_2->setStyleSheet(QLatin1String("QLineEdit{\n"
 "border: 2px solid rgb(37,39,48);\n"
 "border -radius: 20px;\n"
 "color: #FFF;\n"
 "padding -left: 20px;\n"
 "padding -right: 20px;\n"
-"background-color:rgb(34,36,44);\n"
+"background-color:white\n"
 "}\n"
 "QLineEdit:hover{\n"
 "border: 2px solid rgb(48,50,62);\n"
@@ -406,15 +440,13 @@ public:
 "QLineEdit:focus{\n"
 "border: 2px solid rgb(85,170,255);\n"
 "background-color: rgb(43,45,56);\n"
-"}*/"));
-        comboBox_3 = new QComboBox(tab_2);
-        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
-        comboBox_3->setGeometry(QRect(810, 430, 73, 22));
+"}"));
+        label_16 = new QLabel(tab_2);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setGeometry(QRect(0, 430, 151, 41));
         tabWidget->addTab(tab_2, QString());
         label_13->raise();
         tab_produit->raise();
-        rechercher_2->raise();
-        chercher_id->raise();
         label_7->raise();
         label_8->raise();
         update_video->raise();
@@ -431,9 +463,58 @@ public:
         update_id->raise();
         pushButton_2->raise();
         comboBox->raise();
-        update_fk->raise();
         comboBox_3->raise();
+        radioButton->raise();
+        radioButton_2->raise();
+        radioButton_3->raise();
+        recherche_par_reference_2->raise();
+        label_16->raise();
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QStringLiteral("tab_3"));
+        groupBox = new QGroupBox(tab_3);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(0, 0, 811, 521));
+        subject = new QLineEdit(groupBox);
+        subject->setObjectName(QStringLiteral("subject"));
+        subject->setGeometry(QRect(10, 130, 781, 51));
+        msg = new QPlainTextEdit(groupBox);
+        msg->setObjectName(QStringLiteral("msg"));
+        msg->setGeometry(QRect(20, 250, 751, 201));
+        pushButton_mail = new QPushButton(groupBox);
+        pushButton_mail->setObjectName(QStringLiteral("pushButton_mail"));
+        pushButton_mail->setGeometry(QRect(340, 470, 93, 28));
+        comboBox_mail_4 = new QComboBox(groupBox);
+        comboBox_mail_4->setObjectName(QStringLiteral("comboBox_mail_4"));
+        comboBox_mail_4->setGeometry(QRect(30, 31, 761, 41));
+        pb_gotomail = new QPushButton(groupBox);
+        pb_gotomail->setObjectName(QStringLiteral("pb_gotomail"));
+        pb_gotomail->setGeometry(QRect(530, 470, 93, 28));
+        label_11 = new QLabel(groupBox);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setGeometry(QRect(40, 90, 111, 31));
+        label_15 = new QLabel(groupBox);
+        label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setGeometry(QRect(40, 200, 81, 31));
+        tabWidget->addTab(tab_3, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName(QStringLiteral("tab_4"));
+        tabWidget->addTab(tab_4, QString());
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QStringLiteral("tab_5"));
+        tableView_historique = new QTableView(tab_5);
+        tableView_historique->setObjectName(QStringLiteral("tableView_historique"));
+        tableView_historique->setGeometry(QRect(60, 40, 711, 401));
+        loadButton_historique = new QPushButton(tab_5);
+        loadButton_historique->setObjectName(QStringLiteral("loadButton_historique"));
+        loadButton_historique->setGeometry(QRect(840, 60, 93, 28));
+        homeButton_recherche = new QPushButton(tab_5);
+        homeButton_recherche->setObjectName(QStringLiteral("homeButton_recherche"));
+        homeButton_recherche->setGeometry(QRect(840, 430, 93, 28));
+        tabWidget->addTab(tab_5, QString());
         MainWindow->setCentralWidget(centralWidget);
+        statusBar = new QStatusBar(MainWindow);
+        statusBar->setObjectName(QStringLiteral("statusBar"));
+        MainWindow->setStatusBar(statusBar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1034, 26));
@@ -441,13 +522,16 @@ public:
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
+
+        mainToolBar->addAction(actionopen);
+        mainToolBar->addSeparator();
+        mainToolBar->addAction(actionplay);
+        mainToolBar->addAction(actionpause);
+        mainToolBar->addAction(actionstop);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -456,6 +540,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Gestion des Clients", Q_NULLPTR));
+        actionopen->setText(QApplication::translate("MainWindow", "open", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionopen->setToolTip(QApplication::translate("MainWindow", "open a file", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        actionplay->setText(QApplication::translate("MainWindow", "play", Q_NULLPTR));
+        actionpause->setText(QApplication::translate("MainWindow", "pause", Q_NULLPTR));
+        actionstop->setText(QApplication::translate("MainWindow", "stop", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Produits", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "ID", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "Nom produit", Q_NULLPTR));
@@ -470,7 +561,6 @@ public:
          << QApplication::translate("MainWindow", "fk", Q_NULLPTR)
         );
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Add", Q_NULLPTR));
-        rechercher_2->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "ID", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "ID", Q_NULLPTR));
         label_12->setText(QApplication::translate("MainWindow", "stock", Q_NULLPTR));
@@ -489,7 +579,21 @@ public:
         comboBox_3->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "fk", Q_NULLPTR)
         );
+        radioButton->setText(QApplication::translate("MainWindow", "trier par id", Q_NULLPTR));
+        radioButton_2->setText(QApplication::translate("MainWindow", "trier par nom", Q_NULLPTR));
+        radioButton_3->setText(QApplication::translate("MainWindow", "trier par prix", Q_NULLPTR));
+        label_16->setText(QApplication::translate("MainWindow", "votre choix recherche", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Read", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("MainWindow", "E-Mailing", Q_NULLPTR));
+        pushButton_mail->setText(QApplication::translate("MainWindow", "send", Q_NULLPTR));
+        pb_gotomail->setText(QApplication::translate("MainWindow", "mail", Q_NULLPTR));
+        label_11->setText(QApplication::translate("MainWindow", "Subject", Q_NULLPTR));
+        label_15->setText(QApplication::translate("MainWindow", "Message", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "mailing", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("MainWindow", "video", Q_NULLPTR));
+        loadButton_historique->setText(QApplication::translate("MainWindow", "actualiser", Q_NULLPTR));
+        homeButton_recherche->setText(QApplication::translate("MainWindow", "home", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("MainWindow", "historique", Q_NULLPTR));
     } // retranslateUi
 
 };

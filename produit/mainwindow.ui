@@ -61,7 +61,7 @@ background-color:white
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -228,8 +228,8 @@ background-color:white
      <widget class="QPushButton" name="valider">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>210</y>
+        <x>100</x>
+        <y>430</y>
         <width>281</width>
         <height>61</height>
        </rect>
@@ -346,51 +346,11 @@ background-color:white
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="rechercher_2">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>460</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Search</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="chercher_id">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>460</y>
-        <width>111</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLineEdit{
-border: 2px solid rgb(37,39,48);
-border -radius: 20px;
-color: #FFF;
-padding -left: 20px;
-padding -right: 20px;
-background-color:white
-}
-QLineEdit:hover{
-border: 2px solid rgb(48,50,62);
-}
-QLineEdit:focus{
-border: 2px solid rgb(85,170,255);
-background-color: rgb(43,45,56);
-}</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>280</y>
+        <x>10</x>
+        <y>340</y>
         <width>56</width>
         <height>16</height>
        </rect>
@@ -623,8 +583,8 @@ background-color: rgb(43,45,56);
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>-320</x>
-        <y>-30</y>
+        <x>0</x>
+        <y>-20</y>
         <width>1331</width>
         <height>701</height>
        </rect>
@@ -642,8 +602,8 @@ background-color: rgb(43,45,56);
      <widget class="QPushButton" name="read">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>340</y>
+        <x>310</x>
+        <y>440</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -655,8 +615,8 @@ background-color: rgb(43,45,56);
      <widget class="QPushButton" name="pushButton_delete">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>280</y>
+        <x>210</x>
+        <y>340</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -668,8 +628,8 @@ background-color: rgb(43,45,56);
      <widget class="QLineEdit" name="lineEdit_del">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>280</y>
+        <x>80</x>
+        <y>340</y>
         <width>113</width>
         <height>22</height>
        </rect>
@@ -747,33 +707,6 @@ background-color: rgb(43,45,56);
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="update_fk">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>430</y>
-        <width>113</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">/*QLineEdit{
-border: 2px solid rgb(37,39,48);
-border -radius: 20px;
-color: #FFF;
-padding -left: 20px;
-padding -right: 20px;
-background-color:rgb(34,36,44);
-}
-QLineEdit:hover{
-border: 2px solid rgb(48,50,62);
-}
-QLineEdit:focus{
-border: 2px solid rgb(85,170,255);
-background-color: rgb(43,45,56);
-}*/</string>
-      </property>
-     </widget>
      <widget class="QComboBox" name="comboBox_3">
       <property name="geometry">
        <rect>
@@ -789,20 +722,87 @@ background-color: rgb(43,45,56);
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="test">
+     <widget class="QRadioButton" name="radioButton">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>460</y>
+        <x>360</x>
+        <y>220</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>trier par id</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>220</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>trier par nom</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_3">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>220</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>trier par prix</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="recherche_par_reference_2">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>440</y>
         <width>113</width>
         <height>22</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+border: 2px solid rgb(37,39,48);
+border -radius: 20px;
+color: #FFF;
+padding -left: 20px;
+padding -right: 20px;
+background-color:white
+}
+QLineEdit:hover{
+border: 2px solid rgb(48,50,62);
+}
+QLineEdit:focus{
+border: 2px solid rgb(85,170,255);
+background-color: rgb(43,45,56);
+}</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>430</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>votre choix recherche</string>
+      </property>
      </widget>
      <zorder>label_13</zorder>
      <zorder>tab_produit</zorder>
-     <zorder>rechercher_2</zorder>
-     <zorder>chercher_id</zorder>
      <zorder>label_7</zorder>
      <zorder>label_8</zorder>
      <zorder>update_video</zorder>
@@ -819,12 +819,162 @@ background-color: rgb(43,45,56);
      <zorder>update_id</zorder>
      <zorder>pushButton_2</zorder>
      <zorder>comboBox</zorder>
-     <zorder>update_fk</zorder>
      <zorder>comboBox_3</zorder>
-     <zorder>test</zorder>
+     <zorder>radioButton</zorder>
+     <zorder>radioButton_2</zorder>
+     <zorder>radioButton_3</zorder>
+     <zorder>recherche_par_reference_2</zorder>
+     <zorder>label_16</zorder>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>mailing</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>811</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>E-Mailing</string>
+      </property>
+      <widget class="QLineEdit" name="subject">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>781</width>
+         <height>51</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="msg">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>250</y>
+         <width>751</width>
+         <height>201</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_mail">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>470</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>send</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_mail_4">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>31</y>
+         <width>761</width>
+         <height>41</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pb_gotomail">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>470</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>mail</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>90</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Subject</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>200</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Message</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>video</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>historique</string>
+     </attribute>
+     <widget class="QTableView" name="tableView_historique">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>40</y>
+        <width>711</width>
+        <height>401</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="loadButton_historique">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>60</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>actualiser</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="homeButton_recherche">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>430</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>home</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -842,10 +992,55 @@ background-color: rgb(43,45,56);
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionopen"/>
+   <addaction name="separator"/>
+   <addaction name="actionplay"/>
+   <addaction name="actionpause"/>
+   <addaction name="actionstop"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionopen">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/icons/folder_page_white.png</normaloff>:/images/icons/folder_page_white.png</iconset>
+   </property>
+   <property name="text">
+    <string>open</string>
+   </property>
+   <property name="toolTip">
+    <string>open a file</string>
+   </property>
+  </action>
+  <action name="actionplay">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/icons/control_play.png</normaloff>:/images/icons/control_play.png</iconset>
+   </property>
+   <property name="text">
+    <string>play</string>
+   </property>
+  </action>
+  <action name="actionpause">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/icons/control_pause.png</normaloff>:/images/icons/control_pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>pause</string>
+   </property>
+  </action>
+  <action name="actionstop">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/icons/control_stop.png</normaloff>:/images/icons/control_stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>stop</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

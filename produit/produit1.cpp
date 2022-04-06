@@ -48,9 +48,20 @@ bool produit::ajouter( )
     query.bindValue(":video", video);
     query.bindValue(":FK_FOURNISSEUR_PR", fk_string);
 
+    QSqlQuery qry;
+        QDateTime dateTime=QDateTime::currentDateTime();
+
+        QString date=dateTime.toString();
+
+        qry.prepare("insert into HISTORIQUE (ACTIVITE_H,DATE_H) values ('Insertion produit',:dateTime)");
+        qry.bindValue(":dateTime",dateTime);
+
+
+        qry.exec();
     if(!query.exec()){
         qDebug()<<"not added";
     }
+
     return true;
 }
 
@@ -86,6 +97,16 @@ bool produit::supprimer(int id)
     QString res = QString::number(id);
     query.prepare("DELETE FROM PRODUITS where id_produit=:id");
     query.bindValue(":id",res);
+    QSqlQuery qry;
+        QDateTime dateTime=QDateTime::currentDateTime();
+
+        QString date=dateTime.toString();
+
+        qry.prepare("insert into HISTORIQUE (ACTIVITE_H,DATE_H) values ('supprission produit',:dateTime)");
+        qry.bindValue(":dateTime",dateTime);
+
+
+        qry.exec();
 return query.exec();
 }
 
@@ -106,9 +127,20 @@ query.bindValue(":stock", stock_string);
 query.bindValue(":prix", prix_string);
 query.bindValue(":video", video);
 query.bindValue(":FK_FOURNISSEUR_PR", fk_string);
+
+QSqlQuery qry;
+    QDateTime dateTime=QDateTime::currentDateTime();
+
+    QString date=dateTime.toString();
+
+    qry.prepare("insert into HISTORIQUE (ACTIVITE_H,DATE_H) values ('update produit',:dateTime)");
+    qry.bindValue(":dateTime",dateTime);
+
+
+    qry.exec();
 return query.exec();
 }
-
+/*
 QSqlQueryModel * produit::rechercher(int id_produit)
 {
 
@@ -123,5 +155,108 @@ QSqlQueryModel * produit::rechercher(int id_produit)
 
         return model;
    }
+QSqlQueryModel * produit::rechercher_prix(int prix_uni)
+{
+
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery query;
+    QString pes = QString::number(prix_uni);
+    query.prepare("Select * from PRODUITS where prix_uni =:prix_uni");
+    query.bindValue(":id_produit",pes);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("prix_uni"));
+
+        return model;
+   }
+
+QSqlQueryModel * produit::rechercher_nom(QString nom_pr)
+{
+
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("Select * from PRODUITS where nom_pr =:nom_pr");
+    query.bindValue(":nom_pr",nom_pr);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom_poduit"));
+
+        return model;
+   }
+*/
+QSqlQueryModel* produit::Rechercheproduit(QString recherche)
+ {
+     QSqlQueryModel * model= new QSqlQueryModel();
+     model->setQuery("SELECT * FROM PRODUITS WHERE ID_PRODUIT LIKE '"+recherche+"%' OR NOM_PR LIKE '"+recherche+"%' OR QT_STOCK LIKE '"+recherche+"%' OR PRIX_UNI LIKE '"+recherche+"%' OR VIDEO LIKE '"+recherche+"%' OR FK_FOURNISSEUR_PR LIKE '"+recherche+"%'");
+     /*model->setHeaderData(0, Qt::Horizontal, QObject::tr("Reference"));
+     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+     model->setHeaderData(2,Qt::Horizontal,QObject::tr("Email"));
+     model->setHeaderData(3,Qt::Horizontal,QObject::tr("GSM"));
+     model->setHeaderData(4,Qt::Horizontal,QObject::tr("Adresse"));*/
+
+return model;
+}
+
+QSqlQueryModel * produit::trierr(const QString &critere, const QString &mode )
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from PRODUITS order by "+critere+" "+mode+"");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("id_produit"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("stock"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("prix"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("video"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("cle_fk"));
+
+
+    return model;
+}
+
+QSqlQueryModel * produit::tri_id()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from PRODUITS order by ID_PRODUIT asc ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_produit"));
+
+    return model;
+}
+
+QSqlQueryModel * produit::tri_prix()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from PRODUITS order by PRIX_UNI asc ");
+model->setHeaderData(0, Qt::Horizontal, QObject::tr("prix_uni"));
+
+    return model;
+}
+
+QSqlQueryModel *  produit::Tri_nom()
+{produit p;
+    QSqlQueryModel* model =new QSqlQueryModel();
+     QSqlQuery  *nom_produit = new QSqlQuery();
+     nom_produit->prepare("SELECT * FROM PRODUITS order by NOM_PR asc");
+     nom_produit->exec();
+     model->setQuery(*nom_produit);
+     return model ;
+
+}
+QSqlQueryModel * produit::afficher_email()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select MAIL_EMP from EMPLOYE   ");
+    return model;
+}
+QSqlQueryModel * produit::afficher_historique()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+
+    model->setQuery("select * from HISTORIQUE");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Activite"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Date et Heure"));
+
+
+    return model;
+}
 
 
