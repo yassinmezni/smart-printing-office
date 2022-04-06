@@ -28,6 +28,13 @@ public:
     QSqlQueryModel* afficher();
     bool supprimer(int);
     bool modifier();
+    QSqlQueryModel* Recherchelivreur(QString);
+    QSqlQueryModel * trierlivraisonParid_M();
+        QSqlQueryModel * trierlivraisonParid_D();
+        QSqlQueryModel * trierlivraisonParlocalisation();
+        QSqlQueryModel * trierlivraisonParfrais_M();
+        QSqlQueryModel * afficherhistorique();
+
 
 
 private:
