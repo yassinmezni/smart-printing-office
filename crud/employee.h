@@ -2,6 +2,8 @@
 #define EMPLOYEE_H
 #include<QString>
 #include <QSqlQueryModel>
+//*********
+
 class Employee
 {
 public:
@@ -36,6 +38,19 @@ public:
     bool modifier();
    //update
     bool update(int);
+    //rechercher
+    QSqlQueryModel * Rechercheemployee(QString recherche);
+
+    //******************TRIER************************************************
+    QSqlQueryModel * afficher_tri();
+    QSqlQueryModel *Tri_nom();
+    QSqlQueryModel *  trierr(const QString &critere, const QString &mode );
+    QSqlQueryModel * afficher_tri_gsm();
+    QSqlQueryModel * afficher_tri_matricule();
+    //**********************************************************************
+    //historique
+ QSqlQueryModel * afficher_historique();
+
 
 private:
     int Matricule,GSM,Salaire;

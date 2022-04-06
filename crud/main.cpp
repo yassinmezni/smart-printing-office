@@ -6,6 +6,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    //***camera****
+     a.setStyle("fusion");
 
     Connection c;  //une seule instance de la classe connection
     bool test=c.createconnect();//etablir la connexion
@@ -26,5 +28,5 @@ int main(int argc, char *argv[])
 
 
 
-    return a.exec();
+    return a.exec();//La méthode exec() : Envoie la requête pour l’exécuter.
 }

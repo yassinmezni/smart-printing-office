@@ -1,6 +1,10 @@
 #include "employee.h"
 #include <QSqlQuery>
 #include <QtDebug>
+//******hist*****
+#include <QTimer>
+#include <QDateTime>
+//**********
 Employee::Employee()
 {
 Matricule=0;//initialisier le matricule (id)a zero
@@ -40,16 +44,21 @@ void Employee::setMail(QString Mail){this->Mail=Mail;}
 void Employee::setGSM(int GSM){this->GSM=GSM;}
 void Employee::setRole(QString Role){this->Role=Role;}
 void Employee::setSalaire(int Salaire){this->Salaire=Salaire;}
+
+
 bool Employee::ajouter()
 {
 
 
     QSqlQuery query;
+
     QString Matricule_string=QString::number(Matricule);
+
     QString GSM_string=QString::number(GSM);
+
     QString Salaire_string=QString::number(Salaire);
     query.prepare("INSERT INTO EMPLOYE (MATRICULE, NOM_EMP, PRENOM_EMP,MAIL_EMP,GSM_EMP,ROLE_EMP,SALAIRE_EMP) "
-                        "VALUES (:matricule, :nom, :prenom,:mail,:gsm,:role,:salaire)");
+                        "VALUES (:matricule, :nom, :prenom,:mail,:gsm,:role,:salaire)");//BindValue (variable précédée par « : » et insérée dans la partie SQL)
           query.bindValue(":matricule", Matricule_string);
           query.bindValue(":nom", Nom);
           query.bindValue(":prenom", Prenom);
@@ -57,10 +66,29 @@ bool Employee::ajouter()
           query.bindValue(":gsm", GSM_string);
           query.bindValue(":role", Role);
           query.bindValue(":salaire", Salaire_string);
+          QSqlQuery qry;
+                  QDateTime dateTime=QDateTime::currentDateTime();
+
+                  QString date=dateTime.toString();
+
+                  qry.prepare("insert into HISTORIQUE (ACTIVITE_H,DATE_H) values ('ajouter employe',:dateTime)");
+                  qry.bindValue(":dateTime",dateTime);
+
+
+                  qry.exec();
+
+
 
 
 
             return query.exec() ;
+
+
+
+
+
+
+
 
 }
 bool Employee::supprimer(int Mat)
@@ -72,6 +100,16 @@ bool Employee::supprimer(int Mat)
 
         query.bindValue(":Mat", res);
 
+        QSqlQuery qry;
+                QDateTime dateTime=QDateTime::currentDateTime();
+
+                QString date=dateTime.toString();
+
+                qry.prepare("insert into HISTORIQUE (ACTIVITE_H,DATE_H) values ('supprimer employe',:dateTime)");
+                qry.bindValue(":dateTime",dateTime);
+
+
+                qry.exec();
 
         return  query.exec();
 }
@@ -102,8 +140,103 @@ query.bindValue(":mail", Mail);
 query.bindValue(":gsm", GSM_string);
 query.bindValue(":role", Role);
 query.bindValue(":salaire", Salaire_string);
+QSqlQuery qry;
+        QDateTime dateTime=QDateTime::currentDateTime();
+
+        QString date=dateTime.toString();
+
+        qry.prepare("insert into HISTORIQUE (ACTIVITE_H,DATE_H) values ('update employe',:dateTime)");
+        qry.bindValue(":dateTime",dateTime);
+
+
+        qry.exec();
 return query.exec();
 }
 
+QSqlQueryModel * Employee::trierr(const QString &critere, const QString &mode )
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
 
+model->setQuery("select * from EMPLOYE order by "+critere+" "+mode+"");
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("MATRICULE"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("MAIL"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("GSM"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("ROLE"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("SALAIRE"));
+
+    return model;
+}
+QSqlQueryModel * Employee::afficher_tri()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from EMPLOYE order by MATRICULE asc ");
+//model->setHeaderData(0, Qt::Horizontal, QObject::tr("MATRICULE"));
+
+    return model;
+}
+QSqlQueryModel *  Employee::Tri_nom()
+{Employee E;
+    QSqlQueryModel* model =new QSqlQueryModel();
+     QSqlQuery  *nom = new QSqlQuery();
+     nom->prepare("SELECT * FROM EMPLOYE order by NOM_EMP asc");
+     nom->exec();
+     model->setQuery(*nom);
+     return model ;
+
+}
+
+QSqlQueryModel * Employee::afficher_tri_gsm()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from EMPLOYE order by GSM_EMP asc ");
+//model->setHeaderData(0, Qt::Horizontal, QObject::tr("GSM_EMP"));
+
+    return model;
+}
+
+QSqlQueryModel * Employee::afficher_tri_matricule()
+{QSqlQueryModel * model= new QSqlQueryModel();
+
+model->setQuery("select * from EMPLOYE order by MATRICULE asc ");
+//model->setHeaderData(0, Qt::Horizontal, QObject::tr("MATRICULE"));
+
+    return model;
+}
+
+
+/*QSqlQueryModel *  Employee::Tri_prenom()
+{Employee E;
+    QSqlQueryModel* model =new QSqlQueryModel();
+     QSqlQuery  *nom = new QSqlQuery();
+     nom->prepare("SELECT * FROM EMPLOYE order by PRENOM_EMP asc");
+     nom->exec();
+     model->setQuery(*nom);
+     return model ;
+
+}*/
+QSqlQueryModel * Employee::afficher_historique()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+
+    model->setQuery("select * from HISTORIQUE");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Activite"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Date et Heure"));
+
+
+    return model;
+}
+QSqlQueryModel* Employee::Rechercheemployee(QString recherche)
+ {
+     QSqlQueryModel * model= new QSqlQueryModel();
+     model->setQuery("SELECT * FROM Employe WHERE MATRICULE LIKE '"+recherche+"%' OR NOM_EMP LIKE '"+recherche+"%' OR PRENOM_EMP LIKE '"+recherche+"%' OR MAIL_EMP LIKE '"+recherche+"%' OR GSM_EMP LIKE '"+recherche+"%' OR ROLE_EMP LIKE '"+recherche+"%' OR SALAIRE_EMP LIKE '"+recherche+"%' ");
+    /* model->setHeaderData(0, Qt::Horizontal, QObject::tr("MATRICULE"));
+     model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
+     model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
+     model->setHeaderData(3,Qt::Horizontal,QObject::tr("GSM"));
+     model->setHeaderData(4,Qt::Horizontal,QObject::tr("Adresse"));
+*/
+return model;
+}
 
