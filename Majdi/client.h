@@ -31,6 +31,13 @@ public:
     QSqlQueryModel* afficher();
     bool supprimer(int);
     bool modifier(int);
+    QSqlQueryModel* Rechercheclient(QString);
+    QSqlQueryModel * trierclientParCIN_M();
+    QSqlQueryModel * trierclientParCIN_D();
+    QSqlQueryModel * trierclientParNom();
+    QSqlQueryModel * trierclientParPrenom();
+
+
 
 private:
 int cin,numtel ;

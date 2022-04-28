@@ -1,7 +1,12 @@
 #include "client.h"
-#include <QSqlQuery>
-#include <QtDebug>
-#include <QObject>
+#include<QSqlQuery>
+#include<QtDebug>
+#include<QSqlQueryModel>
+#include<QString>
+#include<QFile>
+#include<QTextStream>
+#include<QDate>
+
 
 
 client::client()
@@ -30,10 +35,10 @@ void client::setmail(QString mail){this->mail=mail;}
 
 
 bool client::ajouter()
-{   QSqlQuery query;  
+{   QSqlQuery query;
     QString res=QString::number(cin);
-       
-          
+
+
              query.prepare("INSERT INTO clients ( cin, nom_cl, prenom_cl, adresse_cl, num_tel, mail) "
                            "VALUES (:cin, :nom, :prenom, :adresse, :numtel, :mail)");
              query.bindValue(":cin", res);
@@ -83,4 +88,70 @@ bool client::modifier(int cin)
         query.bindValue(":cin",cin_string);
 
         return query.exec();
+}
+
+
+QSqlQueryModel* client::Rechercheclient(QString recherche)
+ {
+     QSqlQueryModel * model= new QSqlQueryModel();
+     model->setQuery("SELECT * FROM CLIENTS WHERE CIN LIKE '"+recherche+"%' OR NOM_CL LIKE '"+recherche+"%' OR PRENOM_CL LIKE '"+recherche+"%'");
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant client"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom "));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("adresse"));
+     model->setHeaderData(4, Qt::Horizontal, QObject::tr("numéro du tél"));
+     model->setHeaderData(5, Qt::Horizontal, QObject::tr("mail"));
+
+return model;
+}
+
+
+
+
+
+//Trie Par CIN montant
+QSqlQueryModel * client::trierclientParCIN_M()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM clients order by CIN ASC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
+}
+
+//Trie Par CIN descendent
+QSqlQueryModel * client::trierclientParCIN_D()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM clients order by CIN DESC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
+}
+
+//Trie Par Nom
+QSqlQueryModel * client::trierclientParNom()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM clients order by NOM_CL ASC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
+}
+//trie par prenom
+QSqlQueryModel * client::trierclientParPrenom()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM clients order by PRENOM_CL ASC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
 }
